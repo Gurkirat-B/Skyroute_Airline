@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyRoute - Payment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="navbar">
+      <div class="container navbar-inner">
+        <a class="logo" href="index.html">SkyRoute</a>
+        <div class="nav-links">
+          <div class="active">Flights</div>
+          <div>Manage Booking</div>
+          <div>Check-In</div>
+          <a href="support.html">Support</a>
+        </div>
+        <div class="btn">Sign In</div>
+      </div>
+    </div>
+
+    <div class="container page-header">
+      <h1>Payment</h1>
+      <p>Review your total and complete your booking securely.</p>
+
+      <div class="progress">
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Passengers</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Seats</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Add-ons</div></div>
+        <div class="step-line"></div>
+        <div class="step active"><div class="step-circle"></div><div class="step-label">Payment</div></div>
+      </div>
+    </div>
+
+    <div class="container grid-main">
+      <div class="main-left">
+        <div class="card">
+          <h2>Payment Details</h2>
+          <p class="subtitle">Enter card information in the fields below.</p>
+          <div class="split-2" style="margin-top:20px;">
+            <div class="field" style="grid-column: span 2;"><label>Cardholder Name</label><div class="input">John Smith</div></div>
+            <div class="field" style="grid-column: span 2;"><label>Card Number</label><div class="input">**** **** **** 4821</div></div>
+            <div class="field"><label>Expiry Date</label><div class="input">08 / 28</div></div>
+            <div class="field"><label>CVV</label><div class="input">***</div></div>
+            <div class="field" style="grid-column: span 2;"><label>Billing Address</label><div class="input">123 King St W, Toronto, ON</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Billing Summary</h2>
+          <p class="subtitle">Final review before payment confirmation.</p>
+          <div class="split-2" style="margin-top:20px;">
+            <div>• Taxes and core fees already included</div>
+            <div>• Optional add-ons shown separately</div>
+            <div>• Confirmation email sent after payment</div>
+            <div>• Booking can be managed later online</div>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <a class="btn-secondary" href="addons.html">Back to Add-ons</a>
+          <a class="btn" href="confirmation.html">Pay Now</a>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h2>Trip Summary</h2>
+          <p class="subtitle">Final amount before payment.</p>
+          <div class="summary-box" style="margin-top:16px;">
+            <h4>Toronto (YYZ) → London (LHR)</h4>
+            <p>25 Mar 2026 - 02 Apr 2026</p>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong>$650</strong></div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div>$25</div></div>
+            <div class="summary-row"><div class="label">Add-ons</div><div>$35</div></div>
+            <div class="summary-row"><div class="label">Taxes & Fees</div><div>$85</div></div>
+          </div>
+          <div class="summary-total"><div>Total</div><strong>$795</strong></div>
+          <div class="note" style="margin-top:12px;">This is the final amount charged for the booking shown on this page.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">© 2026 SkyRoute Prototype</div>
+    </div>
+  </div>
+</body>
+</html>

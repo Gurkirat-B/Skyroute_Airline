@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyRoute - Flight Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="navbar">
+      <div class="container navbar-inner">
+        <a class="logo" href="index.html">SkyRoute</a>
+        <div class="nav-links">
+          <div class="active">Flights</div>
+          <div>Manage Booking</div>
+          <div>Check-In</div>
+          <a href="support.html">Support</a>
+        </div>
+        <div class="btn">Sign In</div>
+      </div>
+    </div>
+
+    <div class="container page-header">
+      <h1>Flight Details</h1>
+      <p>Review your selected flight, fare type, and what is included before continuing to passenger information.</p>
+
+      <div class="progress">
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Passengers</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Seats</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Payment</div></div>
+      </div>
+    </div>
+
+    <div class="container grid-main">
+      <div class="main-left">
+        <div class="card">
+          <h2>Selected Flight</h2>
+          <p class="subtitle">Your outbound flight choice.</p>
+          <div class="flight-times" style="margin-top:20px;">
+            <div class="center">
+              <div class="time">8:30 AM</div>
+              <div class="city">Toronto (YYZ)</div>
+            </div>
+            <div class="flight-mid">
+              2h 45m · Nonstop
+              <div class="flight-line"></div>
+              ✈
+            </div>
+            <div class="center">
+              <div class="time">10:15 AM</div>
+              <div class="city">London (LHR)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Fare Comparison</h2>
+          <p class="subtitle">See what your selected fare includes.</p>
+          <div class="option-row" style="margin-top:20px;">
+            <div class="option-card selected">
+              <div>
+                <div class="option-top"><h3>Basic</h3></div>
+                <p>Lowest fare with fewer changes and no seat selection included.</p>
+              </div>
+              <div class="option-bottom"><div class="price">$179</div><div class="tag">Selected</div></div>
+            </div>
+            <div class="option-card">
+              <div>
+                <div class="option-top"><h3>Standard</h3></div>
+                <p>More flexibility with seat selection and one checked bag.</p>
+              </div>
+              <div class="option-bottom"><div class="price">$225</div><div class="tag">Select</div></div>
+            </div>
+            <div class="option-card">
+              <div>
+                <div class="option-top"><h3>Flex</h3></div>
+                <p>Higher flexibility, priority support, and easier changes.</p>
+              </div>
+              <div class="option-bottom"><div class="price">$279</div><div class="tag">Select</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>What’s Included</h2>
+          <p class="subtitle">Clear fare details reduce surprises at checkout.</p>
+          <div class="split-2" style="margin-top:20px;">
+            <div>• 1 personal item included</div>
+            <div>• Cabin baggage policy shown clearly</div>
+            <div>• Change policy visible before payment</div>
+            <div>• Seat selection can be added later</div>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <a class="btn-secondary" href="search-results.html">Back to Results</a>
+          <a class="btn" href="passenger-info.html">Continue to Passengers</a>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h2>Trip Summary</h2>
+          <p class="subtitle">Review your selection before continuing.</p>
+          <div class="summary-box" style="margin-top:16px;">
+            <h4>Toronto (YYZ) → London (LHR)</h4>
+            <p>25 Mar 2026 - 02 Apr 2026</p>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="summary-row"><div class="label">Fare</div><div><strong>$179</strong></div></div>
+            <div class="summary-row"><div class="label">Seat</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
+          </div>
+          <div class="summary-total"><div>Total</div><strong>$179</strong></div>
+          <div class="note" style="margin-top:12px;">Your final total updates as you continue through the booking process.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">© 2026 SkyRoute Prototype</div>
+    </div>
+  </div>
+</body>
+</html>

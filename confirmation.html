@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyRoute - Confirmation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="navbar">
+      <div class="container navbar-inner">
+        <a class="logo" href="index.html">SkyRoute</a>
+        <div class="nav-links">
+          <div class="active">Flights</div>
+          <div>Manage Booking</div>
+          <div>Check-In</div>
+          <a href="support.html">Support</a>
+        </div>
+        <div class="btn">Sign In</div>
+      </div>
+    </div>
+
+    <div class="container page-header">
+      <h1>Booking Confirmation</h1>
+      <p>Your trip has been successfully booked. Ticket details and next actions are shown below.</p>
+
+      <div class="progress">
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Passengers</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Seats</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Add-ons</div></div>
+        <div class="step-line"></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Payment</div></div>
+      </div>
+    </div>
+
+    <div class="container grid-main">
+      <div class="main-left">
+        <div class="card">
+          <div class="success">
+            <div class="success-icon">✓</div>
+            <div>
+              <h2 style="margin:0 0 8px; font-size:28px;">Booking Confirmed</h2>
+              <p class="subtitle">Your flight has been successfully booked.</p>
+              <p class="subtitle" style="margin-top:8px;">A confirmation email has been sent to <strong style="color:#111827;">john@email.com</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Ticket Details</h2>
+          <p class="subtitle">Reference information for your confirmed booking.</p>
+          <div class="ticket-grid" style="margin-top:20px;">
+            <div><strong>Passenger:</strong> John Smith</div>
+            <div><strong>Booking Ref:</strong> SR4K29</div>
+            <div><strong>Route:</strong> Toronto (YYZ) → London (LHR)</div>
+            <div><strong>Dates:</strong> 25 Mar 2026 - 02 Apr 2026</div>
+            <div><strong>Flight Number:</strong> SR214</div>
+            <div><strong>Seat:</strong> 2B</div>
+            <div><strong>Status:</strong> Confirmed</div>
+            <div><strong>Total Paid:</strong> $795</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Next Actions</h2>
+          <p class="subtitle">Choose what you want to do next.</p>
+          <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+            <a class="btn" href="#">Download Ticket</a>
+            <a class="btn-secondary" href="#">Email Ticket</a>
+            <a class="btn-secondary" href="index.html">Return to Home</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h2>Trip Summary</h2>
+          <p class="subtitle">Confirmed booking overview.</p>
+          <div class="summary-box" style="margin-top:16px;">
+            <h4>Toronto (YYZ) → London (LHR)</h4>
+            <p>25 Mar 2026 - 02 Apr 2026</p>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="summary-row"><div class="label">Passenger</div><div><strong>John Smith</strong></div></div>
+            <div class="summary-row"><div class="label">Seat</div><div>2B</div></div>
+            <div class="summary-row"><div class="label">Booking Ref</div><div>SR4K29</div></div>
+          </div>
+          <div class="summary-total"><div>Total</div><strong>$795</strong></div>
+          <div class="note" style="margin-top:12px;">Keep your booking reference handy if you need to manage your booking later.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">© 2026 SkyRoute Prototype</div>
+    </div>
+  </div>
+</body>
+</html>
