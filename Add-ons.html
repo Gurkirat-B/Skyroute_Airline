@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyRoute - Seat Selection</title>
+  <title>SkyRoute - Add-ons</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,17 +22,17 @@
     </div>
 
     <div class="container page-header">
-      <h1>Seat Selection</h1>
-      <p>Choose your preferred seat now or continue with a standard seat assigned later.</p>
+      <h1>Add Extras to Your Trip</h1>
+      <p>Choose optional baggage, seat selection, and protection before payment. All add-ons are clearly optional.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
         <div class="step-line"></div>
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Passengers</div></div>
         <div class="step-line"></div>
-        <div class="step active"><div class="step-circle"></div><div class="step-label">Seats</div></div>
+        <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Seats</div></div>
         <div class="step-line"></div>
-        <div class="step pending"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
+        <div class="step active"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
         <div class="step-line"></div>
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Payment</div></div>
       </div>
@@ -41,52 +41,56 @@
     <div class="container grid-main">
       <div class="main-left">
         <div class="card">
-          <h2>Select Your Seat</h2>
-          <p class="subtitle">Available, selected, and unavailable seats are shown clearly below.</p>
-
-          <div class="seat-grid" style="margin-top:20px;">
-            <div class="seat-row"><div class="row-number">1</div><div class="seat" data-seat="1A">A</div><div class="seat" data-seat="1B">B</div><div class="seat unavailable">C</div><div class="aisle"></div><div class="seat" data-seat="1D">D</div><div class="seat" data-seat="1E">E</div><div class="seat" data-seat="1F">F</div></div>
-            <div class="seat-row"><div class="row-number">2</div><div class="seat" data-seat="2A">A</div><div class="seat selected" data-seat="2B">B</div><div class="seat" data-seat="2C">C</div><div class="aisle"></div><div class="seat unavailable">D</div><div class="seat" data-seat="2E">E</div><div class="seat" data-seat="2F">F</div></div>
-            <div class="seat-row"><div class="row-number">3</div><div class="seat unavailable">A</div><div class="seat" data-seat="3B">B</div><div class="seat" data-seat="3C">C</div><div class="aisle"></div><div class="seat" data-seat="3D">D</div><div class="seat" data-seat="3E">E</div><div class="seat" data-seat="3F">F</div></div>
-            <div class="seat-row"><div class="row-number">4</div><div class="seat" data-seat="4A">A</div><div class="seat" data-seat="4B">B</div><div class="seat" data-seat="4C">C</div><div class="aisle"></div><div class="seat" data-seat="4D">D</div><div class="seat" data-seat="4E">E</div><div class="seat unavailable">F</div></div>
-            <div class="seat-row"><div class="row-number">5</div><div class="seat" data-seat="5A">A</div><div class="seat unavailable">B</div><div class="seat" data-seat="5C">C</div><div class="aisle"></div><div class="seat" data-seat="5D">D</div><div class="seat" data-seat="5E">E</div><div class="seat" data-seat="5F">F</div></div>
-            <div class="seat-row"><div class="row-number">6</div><div class="seat" data-seat="6A">A</div><div class="seat" data-seat="6B">B</div><div class="seat" data-seat="6C">C</div><div class="aisle"></div><div class="seat" data-seat="6D">D</div><div class="seat unavailable">E</div><div class="seat" data-seat="6F">F</div></div>
-          </div>
-
-          <div class="legend">
-            <div class="legend-item"><div class="legend-box" style="background:#F1F5F9;"></div>Available</div>
-            <div class="legend-item"><div class="legend-box" style="background:#93C5FD;"></div>Selected</div>
-            <div class="legend-item"><div class="legend-box" style="background:#94A3B8;"></div>Unavailable</div>
-          </div>
-
-          <div class="selected-seat-box">
-            <p class="muted">Selected Seat</p>
-            <p id="selected-seat-output" style="font-size:18px; font-weight:700; margin-top:6px;">2B — Standard Seat</p>
+          <h2>Optional Baggage</h2>
+          <p class="subtitle">Add extra baggage only if you need it.</p>
+          <div class="option-row" style="margin-top:20px;">
+            <div class="option-card selected"><div><h3>No Extra Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card"><div><h3>1 Extra Bag</h3><p>Add one checked bag up to 23kg.</p></div><div class="option-bottom"><div class="price">$60</div><div class="tag">Select</div></div></div>
+            <div class="option-card"><div><h3>2 Extra Bags</h3><p>Add two checked bags for longer trips.</p></div><div class="option-bottom"><div class="price">$120</div><div class="tag">Select</div></div></div>
           </div>
         </div>
 
-        <div class="button-row">
-          <a class="btn-secondary" href="passenger-info.html">Back to Passengers</a>
-          <a class="btn" href="addons.html">Continue to Add-ons</a>
+        <div class="card">
+          <h2>Seat Selection</h2>
+          <p class="subtitle">Reserve your preferred seat before check-in.</p>
+          <div class="option-row" style="margin-top:20px;">
+            <div class="option-card selected"><div><h3>Standard Seat</h3><p>Random standard seat assigned at check-in.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card"><div><h3>Window / Aisle</h3><p>Choose a preferred standard seat.</p></div><div class="option-bottom"><div class="price">$25</div><div class="tag">Select</div></div></div>
+            <div class="option-card"><div><h3>Extra Legroom</h3><p>More space for a more comfortable flight.</p></div><div class="option-bottom"><div class="price">$55</div><div class="tag">Select</div></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Travel Insurance</h2>
+          <p class="subtitle">Protection for trip interruptions and emergencies.</p>
+          <div class="option-row" style="margin-top:20px;">
+            <div class="option-card selected"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card"><div><h3>Basic Coverage</h3><p>Includes trip delay and baggage support.</p></div><div class="option-bottom"><div class="price">$18</div><div class="tag">Select</div></div></div>
+            <div class="option-card"><div><h3>Premium Coverage</h3><p>Expanded medical and cancellation protection.</p></div><div class="option-bottom"><div class="price">$40</div><div class="tag">Select</div></div></div>
+          </div>
         </div>
       </div>
 
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Review your selection before continuing.</p>
+          <p class="subtitle">Review your selection before payment.</p>
           <div class="summary-box" style="margin-top:16px;">
             <h4>Toronto (YYZ) → London (LHR)</h4>
             <p>25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Flight Fare</div><div><strong>$650</strong></div></div>
-            <div class="summary-row"><div class="label">Seat Selection</div><div>$25</div></div>
-            <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong>$650</strong></div></div>
+            <div class="summary-row"><div class="label">Baggage</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Insurance</div><div>$0</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$675</strong></div>
-          <div class="note" style="margin-top:12px;">Selecting a preferred seat is optional and can be changed later if your fare allows.</div>
+          <div class="summary-total"><div>Total</div><strong>$650</strong></div>
+          <div class="note" style="margin-top:12px;">Prices update based on selected add-ons. Optional services are not required to continue.</div>
         </div>
+
+        <a class="btn" href="payment.html">Continue to Payment</a>
+        <a class="btn-secondary" href="seat-selection.html">Back to Seats</a>
       </div>
     </div>
 
@@ -94,7 +98,5 @@
       <div class="container">© 2026 SkyRoute Prototype</div>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
