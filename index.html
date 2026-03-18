@@ -26,7 +26,7 @@
       <p>Compare flights, choose add-ons clearly, and see your total before checkout.</p>
     </div>
 
-    <div class="container card search-card">
+    <form id="home-booking-form" class="container card search-card">
       <div class="tab-row">
         <div class="tab active">Round Trip</div>
         <div class="tab inactive">One Way</div>
@@ -34,12 +34,45 @@
       </div>
 
       <div class="field-row">
-        <div class="field"><label>From</label><div class="input">Toronto (YYZ)</div></div>
-        <div class="field"><label>To</label><div class="input">London (LHR)</div></div>
-        <div class="field"><label>Departure</label><div class="input">25 Mar 2026</div></div>
-        <div class="field"><label>Return</label><div class="input">02 Apr 2026</div></div>
-        <div class="field small"><label>Passengers</label><div class="input">2 Passengers</div></div>
-        <div class="field small"><label>Class</label><div class="input">Economy</div></div>
+        <div class="field">
+          <label for="from">From</label>
+          <input id="from" class="input" type="text" value="Toronto (YYZ)" />
+        </div>
+
+        <div class="field">
+          <label for="to">To</label>
+          <input id="to" class="input" type="text" value="London (LHR)" />
+        </div>
+
+        <div class="field">
+          <label for="departure">Departure</label>
+          <input id="departure" class="input" type="date" value="2026-03-25" />
+        </div>
+
+        <div class="field">
+          <label for="returnDate">Return</label>
+          <input id="returnDate" class="input" type="date" value="2026-04-02" />
+        </div>
+
+        <div class="field small">
+          <label for="passengers">Passengers</label>
+          <select id="passengers" class="input">
+            <option>1 Passenger</option>
+            <option selected>2 Passengers</option>
+            <option>3 Passengers</option>
+            <option>4 Passengers</option>
+          </select>
+        </div>
+
+        <div class="field small">
+          <label for="cabinClass">Class</label>
+          <select id="cabinClass" class="input">
+            <option selected>Economy</option>
+            <option>Premium Economy</option>
+            <option>Business</option>
+            <option>First</option>
+          </select>
+        </div>
       </div>
 
       <div class="actions-row" style="justify-content: space-between; align-items: center;">
@@ -47,9 +80,9 @@
           <div class="checkbox"></div>
           <div>Enable fare comparison</div>
         </div>
-        <a class="btn" href="search-results.html">Search Flights</a>
+        <button class="btn" type="submit">Search Flights</button>
       </div>
-    </div>
+    </form>
 
     <div class="container feature-row section">
       <div class="card feature-card">
@@ -70,5 +103,7 @@
       <div class="container">© 2026 SkyRoute Prototype</div>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

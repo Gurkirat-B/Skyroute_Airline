@@ -46,7 +46,10 @@
             <div>
               <h2 style="margin:0 0 8px; font-size:28px;">Booking Confirmed</h2>
               <p class="subtitle">Your flight has been successfully booked.</p>
-              <p class="subtitle" style="margin-top:8px;">A confirmation email has been sent to <strong style="color:#111827;">john@email.com</strong>.</p>
+              <p class="subtitle" style="margin-top:8px;">
+                A confirmation email has been sent to
+                <strong id="confirm-email" style="color:#111827;">john@email.com</strong>.
+              </p>
             </div>
           </div>
         </div>
@@ -55,12 +58,12 @@
           <h2>Ticket Details</h2>
           <p class="subtitle">Reference information for your confirmed booking.</p>
           <div class="ticket-grid" style="margin-top:20px;">
-            <div><strong>Passenger:</strong> John Smith</div>
-            <div><strong>Booking Ref:</strong> SR4K29</div>
-            <div><strong>Route:</strong> Toronto (YYZ) → London (LHR)</div>
-            <div><strong>Dates:</strong> 25 Mar 2026 - 02 Apr 2026</div>
+            <div><strong>Passenger:</strong> <span id="confirm-passenger">John Smith</span></div>
+            <div><strong>Booking Ref:</strong> <span id="confirm-reference">SR4K29</span></div>
+            <div><strong>Route:</strong> <span id="confirm-route">Toronto (YYZ) → London (LHR)</span></div>
+            <div><strong>Dates:</strong> <span id="confirm-dates">25 Mar 2026 - 02 Apr 2026</span></div>
             <div><strong>Flight Number:</strong> SR214</div>
-            <div><strong>Seat:</strong> 2B</div>
+            <div><strong>Seat:</strong> <span id="confirm-seat">2B</span></div>
             <div><strong>Status:</strong> Confirmed</div>
             <div><strong>Total Paid:</strong> $795</div>
           </div>
@@ -82,13 +85,13 @@
           <h2>Trip Summary</h2>
           <p class="subtitle">Confirmed booking overview.</p>
           <div class="summary-box" style="margin-top:16px;">
-            <h4>Toronto (YYZ) → London (LHR)</h4>
-            <p>25 Mar 2026 - 02 Apr 2026</p>
+            <h4 class="readonly-value" id="confirm-route-side">Toronto (YYZ) → London (LHR)</h4>
+            <p id="confirm-dates-side">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Passenger</div><div><strong>John Smith</strong></div></div>
-            <div class="summary-row"><div class="label">Seat</div><div>2B</div></div>
-            <div class="summary-row"><div class="label">Booking Ref</div><div>SR4K29</div></div>
+            <div class="summary-row"><div class="label">Passenger</div><div><strong id="confirm-passenger-side">John Smith</strong></div></div>
+            <div class="summary-row"><div class="label">Seat</div><div id="confirm-seat-side">2B</div></div>
+            <div class="summary-row"><div class="label">Booking Ref</div><div id="confirm-reference-side">SR4K29</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong>$795</strong></div>
           <div class="note" style="margin-top:12px;">Keep your booking reference handy if you need to manage your booking later.</div>
@@ -100,5 +103,7 @@
       <div class="container">© 2026 SkyRoute Prototype</div>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

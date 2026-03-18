@@ -40,32 +40,66 @@
 
     <div class="container grid-main">
       <div class="main-left">
-        <div class="card">
+        <form id="passenger-form" class="card">
           <h2>Passenger Details</h2>
           <p class="subtitle">Complete the required travel information.</p>
-          <div class="split-2" style="margin-top:20px;">
-            <div class="field"><label>Title</label><div class="input">Mr</div></div>
-            <div class="field"><label>Nationality</label><div class="input">Canadian</div></div>
-            <div class="field"><label>First Name</label><div class="input">John</div></div>
-            <div class="field"><label>Last Name</label><div class="input">Smith</div></div>
-            <div class="field"><label>Date of Birth</label><div class="input">01 Jan 1990</div></div>
-            <div class="field"><label>Passport Number</label><div class="input">A12345678</div></div>
-          </div>
-        </div>
 
-        <div class="card">
-          <h2>Contact Information</h2>
+          <div class="form-grid" style="margin-top:20px;">
+            <div class="field">
+              <label for="title">Title</label>
+              <select id="title" class="input">
+                <option>Mr</option>
+                <option>Ms</option>
+                <option>Mrs</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="nationality">Nationality</label>
+              <input id="nationality" class="input" type="text" placeholder="Nationality" />
+            </div>
+
+            <div class="field">
+              <label for="firstName">First Name</label>
+              <input id="firstName" class="input" type="text" placeholder="First name" />
+            </div>
+
+            <div class="field">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" class="input" type="text" placeholder="Last name" />
+            </div>
+
+            <div class="field">
+              <label for="dob">Date of Birth</label>
+              <input id="dob" class="input" type="date" />
+            </div>
+
+            <div class="field">
+              <label for="passport">Passport Number</label>
+              <input id="passport" class="input" type="text" placeholder="Passport number" />
+            </div>
+          </div>
+
+          <h2 style="margin-top:28px;">Contact Information</h2>
           <p class="subtitle">Used for confirmations and updates.</p>
-          <div class="split-2" style="margin-top:20px;">
-            <div class="field"><label>Email</label><div class="input">john@email.com</div></div>
-            <div class="field"><label>Phone</label><div class="input">+1 416 555 0000</div></div>
-          </div>
-        </div>
 
-        <div class="button-row">
-          <a class="btn-secondary" href="flight-details.html">Back to Flight Details</a>
-          <a class="btn" href="seat-selection.html">Continue to Seat Selection</a>
-        </div>
+          <div class="form-grid" style="margin-top:20px;">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" class="input" type="email" placeholder="Email address" />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" class="input" type="text" placeholder="Phone number" />
+            </div>
+          </div>
+
+          <div class="button-row" style="margin-top:24px;">
+            <a class="btn-secondary" href="flight-details.html">Back to Flight Details</a>
+            <button class="btn" type="submit">Continue to Seat Selection</button>
+          </div>
+        </form>
       </div>
 
       <div class="sidebar">
@@ -91,5 +125,7 @@
       <div class="container">© 2026 SkyRoute Prototype</div>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
