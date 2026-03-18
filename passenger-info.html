@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyRoute - Flight Details</title>
+  <title>SkyRoute - Passenger Info</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,13 +22,13 @@
     </div>
 
     <div class="container page-header">
-      <h1>Flight Details</h1>
-      <p>Review your selected flight, fare type, and what is included before continuing to passenger information.</p>
+      <h1>Passenger Information</h1>
+      <p>Enter traveler and contact details carefully to avoid booking errors later.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
         <div class="step-line"></div>
-        <div class="step pending"><div class="step-circle"></div><div class="step-label">Passengers</div></div>
+        <div class="step active"><div class="step-circle"></div><div class="step-label">Passengers</div></div>
         <div class="step-line"></div>
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Seats</div></div>
         <div class="step-line"></div>
@@ -41,67 +41,30 @@
     <div class="container grid-main">
       <div class="main-left">
         <div class="card">
-          <h2>Selected Flight</h2>
-          <p class="subtitle">Your outbound flight choice.</p>
-          <div class="flight-times" style="margin-top:20px;">
-            <div class="center">
-              <div class="time">8:30 AM</div>
-              <div class="city">Toronto (YYZ)</div>
-            </div>
-            <div class="flight-mid">
-              2h 45m · Nonstop
-              <div class="flight-line"></div>
-              ✈
-            </div>
-            <div class="center">
-              <div class="time">10:15 AM</div>
-              <div class="city">London (LHR)</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Fare Comparison</h2>
-          <p class="subtitle">See what your selected fare includes.</p>
-          <div class="option-row" style="margin-top:20px;">
-            <div class="option-card selected">
-              <div>
-                <div class="option-top"><h3>Basic</h3></div>
-                <p>Lowest fare with fewer changes and no seat selection included.</p>
-              </div>
-              <div class="option-bottom"><div class="price">$179</div><div class="tag">Selected</div></div>
-            </div>
-            <div class="option-card">
-              <div>
-                <div class="option-top"><h3>Standard</h3></div>
-                <p>More flexibility with seat selection and one checked bag.</p>
-              </div>
-              <div class="option-bottom"><div class="price">$225</div><div class="tag">Select</div></div>
-            </div>
-            <div class="option-card">
-              <div>
-                <div class="option-top"><h3>Flex</h3></div>
-                <p>Higher flexibility, priority support, and easier changes.</p>
-              </div>
-              <div class="option-bottom"><div class="price">$279</div><div class="tag">Select</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>What’s Included</h2>
-          <p class="subtitle">Clear fare details reduce surprises at checkout.</p>
+          <h2>Passenger Details</h2>
+          <p class="subtitle">Complete the required travel information.</p>
           <div class="split-2" style="margin-top:20px;">
-            <div>• 1 personal item included</div>
-            <div>• Cabin baggage policy shown clearly</div>
-            <div>• Change policy visible before payment</div>
-            <div>• Seat selection can be added later</div>
+            <div class="field"><label>Title</label><div class="input">Mr</div></div>
+            <div class="field"><label>Nationality</label><div class="input">Canadian</div></div>
+            <div class="field"><label>First Name</label><div class="input">John</div></div>
+            <div class="field"><label>Last Name</label><div class="input">Smith</div></div>
+            <div class="field"><label>Date of Birth</label><div class="input">01 Jan 1990</div></div>
+            <div class="field"><label>Passport Number</label><div class="input">A12345678</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Contact Information</h2>
+          <p class="subtitle">Used for confirmations and updates.</p>
+          <div class="split-2" style="margin-top:20px;">
+            <div class="field"><label>Email</label><div class="input">john@email.com</div></div>
+            <div class="field"><label>Phone</label><div class="input">+1 416 555 0000</div></div>
           </div>
         </div>
 
         <div class="button-row">
-          <a class="btn-secondary" href="search-results.html">Back to Results</a>
-          <a class="btn" href="passenger-info.html">Continue to Passengers</a>
+          <a class="btn-secondary" href="flight-details.html">Back to Flight Details</a>
+          <a class="btn" href="seat-selection.html">Continue to Seat Selection</a>
         </div>
       </div>
 
@@ -111,15 +74,15 @@
           <p class="subtitle">Review your selection before continuing.</p>
           <div class="summary-box" style="margin-top:16px;">
             <h4>Toronto (YYZ) → London (LHR)</h4>
-            <p>25 Mar 2026 - 02 Apr 2026</p>
+            <p>25 Mar 2026 - 02 Apr 2026 · Guests: 1</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Fare</div><div><strong>$179</strong></div></div>
+            <div class="summary-row"><div class="label">Flight Fare</div><div><strong>$650</strong></div></div>
             <div class="summary-row"><div class="label">Seat</div><div>$0</div></div>
             <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$179</strong></div>
-          <div class="note" style="margin-top:12px;">Your final total updates as you continue through the booking process.</div>
+          <div class="summary-total"><div>Total</div><strong>$650</strong></div>
+          <div class="note" style="margin-top:12px;">Please review passenger details carefully before continuing.</div>
         </div>
       </div>
     </div>

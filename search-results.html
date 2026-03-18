@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyRoute - Search Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="navbar">
+      <div class="container navbar-inner">
+        <a class="logo" href="index.html">SkyRoute</a>
+        <div class="nav-links">
+          <div class="active">Flights</div>
+          <div>Manage Booking</div>
+          <div>Check-In</div>
+          <a href="support.html">Support</a>
+        </div>
+        <div class="btn">Sign In</div>
+      </div>
+    </div>
+
+    <div class="container page-header">
+      <h1>Choose Your Flight</h1>
+      <p>Compare available flights, review timing and pricing, and continue with the best option for your trip.</p>
+
+      <div class="progress">
+        <div class="step active"><div class="step-circle"></div><div class="step-label">Flights</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Passengers</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Seats</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Payment</div></div>
+      </div>
+    </div>
+
+    <div class="container section">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:24px; font-weight:800;">Toronto (YYZ) → London (LHR)</div>
+            <div class="muted" style="margin-top:6px;">25 Mar 2026 - 02 Apr 2026 · 1 Passenger · Economy</div>
+          </div>
+          <a class="btn" href="index.html">Modify Search</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container grid-main">
+      <div class="main-left">
+        <div class="card flight-card">
+          <div class="flight-meta">
+            <h3>SkyRoute Airlines</h3>
+            <p>SR 214</p>
+          </div>
+          <div class="flight-times">
+            <div class="center">
+              <div class="time">8:30 AM</div>
+              <div class="city">Toronto (YYZ)</div>
+            </div>
+            <div class="flight-mid">
+              2h 45m · Nonstop
+              <div class="flight-line"></div>
+              ✈
+            </div>
+            <div class="center">
+              <div class="time">10:15 AM</div>
+              <div class="city">London (LHR)</div>
+            </div>
+          </div>
+          <div class="flight-price">
+            <div class="amount">$179</div>
+            <a class="btn" href="flight-details.html">Select Flight</a>
+          </div>
+        </div>
+
+        <div class="card flight-card">
+          <div class="flight-meta">
+            <h3>SkyRoute Airlines</h3>
+            <p>SR 450</p>
+          </div>
+          <div class="flight-times">
+            <div class="center">
+              <div class="time">1:00 PM</div>
+              <div class="city">Toronto (YYZ)</div>
+            </div>
+            <div class="flight-mid">
+              3h 10m · Nonstop
+              <div class="flight-line"></div>
+              ✈
+            </div>
+            <div class="center">
+              <div class="time">3:10 PM</div>
+              <div class="city">London (LHR)</div>
+            </div>
+          </div>
+          <div class="flight-price">
+            <div class="amount">$210</div>
+            <a class="btn" href="flight-details.html">Select Flight</a>
+          </div>
+        </div>
+
+        <div class="card flight-card">
+          <div class="flight-meta">
+            <h3>SkyRoute Airlines</h3>
+            <p>SR 882</p>
+          </div>
+          <div class="flight-times">
+            <div class="center">
+              <div class="time">7:45 PM</div>
+              <div class="city">Toronto (YYZ)</div>
+            </div>
+            <div class="flight-mid">
+              2h 45m · Nonstop
+              <div class="flight-line"></div>
+              ✈
+            </div>
+            <div class="center">
+              <div class="time">9:30 PM</div>
+              <div class="city">London (LHR)</div>
+            </div>
+          </div>
+          <div class="flight-price">
+            <div class="amount">$165</div>
+            <a class="btn" href="flight-details.html">Select Flight</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h2>Filters</h2>
+          <p class="subtitle">Narrow results faster.</p>
+          <div style="margin-top:16px; display:flex; flex-direction:column; gap:16px;">
+            <div class="field"><label>Price Range</label><div class="input">$150 – $250</div></div>
+            <div class="field"><label>Departure Time</label><div class="input">Morning / Afternoon / Evening</div></div>
+            <div class="field"><label>Airline</label><div class="input">SkyRoute Airlines</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">© 2026 SkyRoute Prototype</div>
+    </div>
+  </div>
+</body>
+</html>
