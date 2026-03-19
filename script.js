@@ -23,19 +23,11 @@ function setupHomeForm() {
     select.addEventListener("change", () => updateSelectPlaceholderState(select));
   });
 
-  const booking = getBookingData();
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    booking.from = document.getElementById("from").value.trim();
-    booking.to = document.getElementById("to").value.trim();
-    booking.departure = document.getElementById("departure").value;
-    booking.returnDate = document.getElementById("returnDate").value;
-    booking.passengers = document.getElementById("passengers").value;
-    booking.cabinClass = document.getElementById("cabinClass").value;
-
-    localStorage.setItem("bookingData", JSON.stringify(booking));
+    const booking = getHomeBookingData();
+    saveBookingData(booking);
     window.location.href = "search-results.html";
   });
 }
@@ -45,18 +37,15 @@ function setupSearchResults() {
   const routeEl = document.getElementById("results-route");
   const metaEl = document.getElementById("results-meta");
   const booking = getBookingData();
+  const route = getBookingRoute(booking);
+  const tripMeta = getTripMeta(booking);
 
   if (routeEl) {
-    routeEl.textContent = `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
+    routeEl.textContent = route;
   }
 
   if (metaEl) {
-    const parts = [
-      formatDateRange(booking.departure, booking.returnDate),
-      booking.passengers || "1 Passenger",
-      booking.cabinClass || "Economy",
-    ];
-    metaEl.textContent = parts.join(" · ");
+    metaEl.textContent = tripMeta;
   }
 
   if (!buttons.length) return;
@@ -68,7 +57,7 @@ function setupSearchResults() {
       booking.selectedArrivalTime = button.dataset.arrivalTime;
       booking.selectedDuration = button.dataset.duration;
       booking.selectedPrice = button.dataset.price;
-      localStorage.setItem("bookingData", JSON.stringify(booking));
+      saveBookingData(booking);
     });
   });
 }
@@ -77,7 +66,7 @@ function populateFlightDetails() {
   if (!document.getElementById("selected-flight-number")) return;
 
   const booking = getBookingData();
-  const route = `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
+  const route = getBookingRoute(booking);
   const price = booking.selectedPrice || "$179";
 
   setText("selected-flight-number", `Flight ${booking.selectedFlightNumber || "SR 214"}`);
@@ -94,11 +83,8 @@ function populateFlightDetails() {
 
 function populateBookingSummaries() {
   const booking = getBookingData();
-  const route = `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
-  const dates = formatDateRange(booking.departure, booking.returnDate);
-  const passengers = booking.passengers || "1 Passenger";
-  const cabinClass = booking.cabinClass || "Economy";
-  const tripMeta = `${dates} · ${passengers} · ${cabinClass}`;
+  const route = getBookingRoute(booking);
+  const tripMeta = getTripMeta(booking);
 
   setText("results-route", route);
   setText("results-meta", tripMeta);
@@ -145,7 +131,7 @@ function setupSeatSelection() {
 
         const booking = getBookingData();
         booking.seat = seat.dataset.seat;
-        localStorage.setItem("bookingData", JSON.stringify(booking));
+        saveBookingData(booking);
       });
     });
   }
@@ -185,7 +171,7 @@ function setupPassengerForm() {
     booking.email = document.getElementById("email").value.trim();
     booking.phone = document.getElementById("phone").value.trim();
 
-    localStorage.setItem("bookingData", JSON.stringify(booking));
+    saveBookingData(booking);
     window.location.href = "seat-selection.html";
   });
 }
@@ -213,7 +199,7 @@ function setupPaymentForm() {
     booking.bookingReference = generateReference();
     booking.status = "Confirmed";
 
-    localStorage.setItem("bookingData", JSON.stringify(booking));
+    saveBookingData(booking);
     window.location.href = "confirmation.html";
   });
 }
@@ -224,7 +210,7 @@ function populateConfirmation() {
   const booking = getBookingData();
   const passengerName =
     [booking.firstName, booking.lastName].filter(Boolean).join(" ") || "John Smith";
-  const route = `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
+  const route = getBookingRoute(booking);
   const dates = formatDateRange(booking.departure, booking.returnDate);
 
   setText("confirm-email", booking.email || "john@email.com");
@@ -244,6 +230,33 @@ function populateConfirmation() {
 function getBookingData() {
   const existing = localStorage.getItem("bookingData");
   return existing ? JSON.parse(existing) : {};
+}
+
+function saveBookingData(booking) {
+  localStorage.setItem("bookingData", JSON.stringify(booking));
+}
+
+function getHomeBookingData() {
+  return {
+    ...getBookingData(),
+    from: document.getElementById("from")?.value.trim() || "",
+    to: document.getElementById("to")?.value.trim() || "",
+    departure: document.getElementById("departure")?.value || "",
+    returnDate: document.getElementById("returnDate")?.value || "",
+    passengers: document.getElementById("passengers")?.value || "",
+    cabinClass: document.getElementById("cabinClass")?.value || "",
+  };
+}
+
+function getBookingRoute(booking) {
+  return `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
+}
+
+function getTripMeta(booking) {
+  const dates = formatDateRange(booking.departure, booking.returnDate);
+  const passengers = booking.passengers || "1 Passenger";
+  const cabinClass = booking.cabinClass || "Economy";
+  return `${dates} · ${passengers} · ${cabinClass}`;
 }
 
 function setText(id, value) {
