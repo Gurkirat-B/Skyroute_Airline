@@ -12,10 +12,10 @@
       <div class="container navbar-inner">
         <a class="logo" href="index.html">SkyRoute</a>
         <div class="nav-links">
-          <div class="active">Flights</div>
-          <div>Manage Booking</div>
-          <div>Check-In</div>
-          <a href="support.html">Support</a>
+          <a class="nav-link active" href="index.html" aria-current="page">Book</a>
+          <div class="nav-link">Manage Booking</div>
+          <div class="nav-link">Check-In</div>
+          <a class="nav-link" href="support.html">Support</a>
         </div>
         <div class="btn">Sign In</div>
       </div>
@@ -43,38 +43,39 @@
         <form id="payment-form" class="card">
           <h2>Payment Details</h2>
           <p class="subtitle">Enter card information in the fields below.</p>
+          <div class="helper-text" style="margin-top:8px;">The total shown already includes taxes, fees, and any selected add-ons.</div>
 
           <div class="form-grid" style="margin-top:20px;">
             <div class="field full">
-              <label for="cardName">Cardholder Name</label>
-              <input id="cardName" class="input" type="text" placeholder="Name on card" />
+              <label for="cardName" class="required">Cardholder Name <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="cardName" class="input" type="text" placeholder="Name on card" required />
             </div>
 
             <div class="field full">
-              <label for="cardNumber">Card Number</label>
-              <input id="cardNumber" class="input" type="text" placeholder="1234 5678 9012 3456" />
+              <label for="cardNumber" class="required">Card Number <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="cardNumber" class="input" type="text" placeholder="1234 5678 9012 3456" required />
             </div>
 
             <div class="field">
-              <label for="expiry">Expiry Date</label>
-              <input id="expiry" class="input" type="text" placeholder="MM / YY" />
+              <label for="expiry" class="required">Expiry Date <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="expiry" class="input" type="text" placeholder="MM / YY" required />
             </div>
 
             <div class="field">
-              <label for="cvv">CVV</label>
-              <input id="cvv" class="input" type="text" placeholder="123" />
+              <label for="cvv" class="required">CVV <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="cvv" class="input" type="text" placeholder="123" required />
             </div>
 
             <div class="field full">
-              <label for="billingAddress">Billing Address</label>
-              <input id="billingAddress" class="input" type="text" placeholder="Billing address" />
+              <label for="billingAddress" class="required">Billing Address <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="billingAddress" class="input" type="text" placeholder="Billing address" required />
             </div>
           </div>
 
           <div class="status-pill" style="margin-top:20px;">Simulated payment only — no real charge</div>
 
           <div class="button-row" style="margin-top:24px;">
-            <a class="btn-secondary" href="addons.html">Back to Add-ons</a>
+            <a class="btn-secondary" href="Add-ons.html">Back to Add-ons</a>
             <button class="btn" type="submit">Pay Now</button>
           </div>
         </form>

@@ -12,10 +12,10 @@
       <div class="container navbar-inner">
         <a class="logo" href="index.html">SkyRoute</a>
         <div class="nav-links">
-          <div class="active">Flights</div>
-          <div>Manage Booking</div>
-          <div>Check-In</div>
-          <a href="support.html">Support</a>
+          <a class="nav-link active" href="index.html" aria-current="page">Book</a>
+          <div class="nav-link">Manage Booking</div>
+          <div class="nav-link">Check-In</div>
+          <a class="nav-link" href="support.html">Support</a>
         </div>
         <div class="btn">Sign In</div>
       </div>
@@ -46,8 +46,8 @@
 
           <div class="form-grid" style="margin-top:20px;">
             <div class="field">
-              <label for="title">Title</label>
-              <select id="title" class="input">
+              <label for="title" class="required">Title <span class="required-marker" aria-hidden="true">*</span></label>
+              <select id="title" class="input" required>
                 <option>Mr</option>
                 <option>Ms</option>
                 <option>Mrs</option>
@@ -55,28 +55,29 @@
             </div>
 
             <div class="field">
-              <label for="nationality">Nationality</label>
-              <input id="nationality" class="input" type="text" placeholder="Nationality" />
+              <label for="nationality" class="required">Nationality <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="nationality" class="input" type="text" placeholder="Nationality" required />
             </div>
 
             <div class="field">
-              <label for="firstName">First Name</label>
-              <input id="firstName" class="input" type="text" placeholder="First name" />
+              <label for="firstName" class="required">First Name <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="firstName" class="input" type="text" placeholder="First name" required />
             </div>
 
             <div class="field">
-              <label for="lastName">Last Name</label>
-              <input id="lastName" class="input" type="text" placeholder="Last name" />
+              <label for="lastName" class="required">Last Name <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="lastName" class="input" type="text" placeholder="Last name" required />
             </div>
 
             <div class="field">
-              <label for="dob">Date of Birth</label>
-              <input id="dob" class="input" type="date" />
+              <label for="dob" class="required">Date of Birth <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="dob" class="input" type="date" required />
             </div>
 
             <div class="field">
-              <label for="passport">Passport Number</label>
-              <input id="passport" class="input" type="text" placeholder="Passport number" />
+              <label for="passport" class="required">Passport Number <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="passport" class="input" type="text" placeholder="Passport number" required />
+              <div class="helper-text">Enter the passport number exactly as it appears on the travel document.</div>
             </div>
           </div>
 
@@ -85,13 +86,14 @@
 
           <div class="form-grid" style="margin-top:20px;">
             <div class="field">
-              <label for="email">Email</label>
-              <input id="email" class="input" type="email" placeholder="Email address" />
+              <label for="email" class="required">Email <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="email" class="input" type="email" placeholder="Email address" required />
+              <div class="helper-text">Booking confirmation and trip updates will be sent to this address.</div>
             </div>
 
             <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" class="input" type="text" placeholder="Phone number" />
+              <label for="phone" class="required">Phone <span class="required-marker" aria-hidden="true">*</span></label>
+              <input id="phone" class="input" type="text" placeholder="Phone number" required />
             </div>
           </div>
 

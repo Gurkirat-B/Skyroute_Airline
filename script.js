@@ -51,7 +51,7 @@ function setupSeatSelection() {
   if (continueBtn) {
     continueBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      window.location.href = "addons.html";
+      window.location.href = "Add-ons.html";
     });
   }
 }

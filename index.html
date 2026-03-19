@@ -12,10 +12,10 @@
       <div class="container navbar-inner">
         <div class="logo">SkyRoute</div>
         <div class="nav-links">
-          <div class="active">Book</div>
-          <div>Manage Booking</div>
-          <div>Check-In</div>
-          <a href="support.html">Support</a>
+          <a class="nav-link active" href="index.html" aria-current="page">Book</a>
+          <div class="nav-link">Manage Booking</div>
+          <div class="nav-link">Check-In</div>
+          <a class="nav-link" href="support.html">Support</a>
         </div>
         <div class="btn">Sign In</div>
       </div>
@@ -33,33 +33,33 @@
         <div class="tab inactive">Multi-City</div>
       </div>
       <div class="helper-text">
-  Enter your trip details below. Total pricing and optional add-ons will be shown clearly before payment.
+        Enter your trip details below. Pricing, taxes, and optional add-ons are shown before the payment step.
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label for="from" class="required">From</label>
-          <input id="from" class="input" type="text" value="Toronto (YYZ)" />
+          <label for="from" class="required">From <span class="required-marker" aria-hidden="true">*</span></label>
+          <input id="from" class="input" type="text" value="Toronto (YYZ)" required />
         </div>
 
         <div class="field">
-          <label for="to" class="required">To</label>
-          <input id="to" class="input" type="text" value="London (LHR)" />
+          <label for="to" class="required">To <span class="required-marker" aria-hidden="true">*</span></label>
+          <input id="to" class="input" type="text" value="London (LHR)" required />
         </div>
 
         <div class="field">
-          <label for="departure" class="required">Departure</label>
-          <input id="departure" class="input" type="date" value="2026-03-25" />
+          <label for="departure" class="required">Departure Date <span class="required-marker" aria-hidden="true">*</span></label>
+          <input id="departure" class="input" type="date" value="2026-03-25" required />
         </div>
 
         <div class="field">
-          <label for="returnDate">Return</label>
+          <label for="returnDate">Return Date</label>
           <input id="returnDate" class="input" type="date" value="2026-04-02" />
         </div>
 
         <div class="field small">
-          <label for="passengers" class="required">Passengers</label>
-          <select id="passengers" class="input">
+          <label for="passengers" class="required">Passengers <span class="required-marker" aria-hidden="true">*</span></label>
+          <select id="passengers" class="input" required>
             <option>1 Passenger</option>
             <option selected>2 Passengers</option>
             <option>3 Passengers</option>
@@ -68,8 +68,8 @@
         </div>
 
         <div class="field small">
-          <label for="cabinClass" class="required">Class</label>
-          <select id="cabinClass" class="input">
+          <label for="cabinClass" class="required">Cabin Class <span class="required-marker" aria-hidden="true">*</span></label>
+          <select id="cabinClass" class="input" required>
             <option selected>Economy</option>
             <option>Premium Economy</option>
             <option>Business</option>

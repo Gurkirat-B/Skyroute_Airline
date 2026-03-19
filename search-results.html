@@ -12,10 +12,10 @@
       <div class="container navbar-inner">
         <a class="logo" href="index.html">SkyRoute</a>
         <div class="nav-links">
-          <div class="active">Flights</div>
-          <div>Manage Booking</div>
-          <div>Check-In</div>
-          <a href="support.html">Support</a>
+          <a class="nav-link active" href="index.html" aria-current="page">Book</a>
+          <div class="nav-link">Manage Booking</div>
+          <div class="nav-link">Check-In</div>
+          <a class="nav-link" href="support.html">Support</a>
         </div>
         <div class="btn">Sign In</div>
       </div>
@@ -134,11 +134,47 @@
       <div class="sidebar">
         <div class="card">
           <h2>Filters</h2>
-          <p class="subtitle">Narrow results faster.</p>
+          <p class="subtitle">Narrow results by travel preferences and fare details.</p>
           <div style="margin-top:16px; display:flex; flex-direction:column; gap:16px;">
-            <div class="field"><label>Price Range</label><div class="input">$150 – $250</div></div>
-            <div class="field"><label>Departure Time</label><div class="input">Morning / Afternoon / Evening</div></div>
-            <div class="field"><label>Airline</label><div class="input">SkyRoute Airlines</div></div>
+            <div class="filter-group">
+              <div class="filter-title">Stops</div>
+              <div class="filter-helper">Choose the connection types you want to see.</div>
+              <div class="filter-options">
+                <label class="filter-check"><input type="checkbox" checked /> Nonstop</label>
+                <label class="filter-check"><input type="checkbox" /> 1 Stop</label>
+                <label class="filter-check"><input type="checkbox" /> 2+ Stops</label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">Departure Time</div>
+              <div class="filter-helper">Compare flights by the time you prefer to leave.</div>
+              <div class="filter-options">
+                <label class="filter-check"><input type="checkbox" checked /> Morning (6 AM - 12 PM)</label>
+                <label class="filter-check"><input type="checkbox" checked /> Afternoon (12 PM - 6 PM)</label>
+                <label class="filter-check"><input type="checkbox" /> Evening (6 PM - 11 PM)</label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">Fare Features</div>
+              <div class="filter-helper">Surface fares with the benefits that matter for this trip.</div>
+              <div class="filter-options">
+                <label class="filter-check"><input type="checkbox" /> Seat selection included</label>
+                <label class="filter-check"><input type="checkbox" /> Checked bag included</label>
+                <label class="filter-check"><input type="checkbox" /> Flexible changes</label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">Price</div>
+              <div class="filter-helper">Keep results within the price range you are comparing.</div>
+              <div class="filter-options">
+                <label class="filter-check"><input type="checkbox" checked /> Under $180</label>
+                <label class="filter-check"><input type="checkbox" checked /> $180 - $220</label>
+                <label class="filter-check"><input type="checkbox" /> Over $220</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
