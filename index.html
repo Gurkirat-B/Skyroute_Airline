@@ -68,15 +68,70 @@
           <input id="returnDate" class="input" type="date" />
         </div>
 
-        <div class="field small">
+        <div class="field small passenger-field">
           <label for="passengers" class="required">Passengers <span class="required-marker" aria-hidden="true">*</span></label>
-          <select id="passengers" class="input" required>
-            <option value="" selected disabled>Select passengers</option>
-            <option>1 Passenger</option>
-            <option>2 Passengers</option>
-            <option>3 Passengers</option>
-            <option>4 Passengers</option>
-          </select>
+          <div class="passenger-selector" id="passenger-selector">
+            <button
+              id="passenger-trigger"
+              class="input passenger-trigger placeholder-select"
+              type="button"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="passenger-panel"
+            >
+              <span id="passenger-display">Select passengers</span>
+              <span class="passenger-chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div id="passenger-panel" class="passenger-panel" hidden>
+              <div class="passenger-panel-header">
+                <div class="passenger-panel-title">Passengers</div>
+                <div class="helper-text">Select travelers for this booking.</div>
+              </div>
+
+              <div class="passenger-row">
+                <div>
+                  <div class="passenger-type">Adults</div>
+                  <div class="passenger-subtext">Ages 12 and over</div>
+                </div>
+                <div class="passenger-controls">
+                  <button type="button" class="counter-btn" data-passenger-action="decrease" data-passenger-type="adults" aria-label="Decrease adults">−</button>
+                  <span class="counter-value" id="count-adults">1</span>
+                  <button type="button" class="counter-btn" data-passenger-action="increase" data-passenger-type="adults" aria-label="Increase adults">+</button>
+                </div>
+              </div>
+
+              <div class="passenger-row">
+                <div>
+                  <div class="passenger-type">Children</div>
+                  <div class="passenger-subtext">Ages 2 to 11</div>
+                </div>
+                <div class="passenger-controls">
+                  <button type="button" class="counter-btn" data-passenger-action="decrease" data-passenger-type="children" aria-label="Decrease children">−</button>
+                  <span class="counter-value" id="count-children">0</span>
+                  <button type="button" class="counter-btn" data-passenger-action="increase" data-passenger-type="children" aria-label="Increase children">+</button>
+                </div>
+              </div>
+
+              <div class="passenger-row">
+                <div>
+                  <div class="passenger-type">Infants</div>
+                  <div class="passenger-subtext">Under 2 years</div>
+                </div>
+                <div class="passenger-controls">
+                  <button type="button" class="counter-btn" data-passenger-action="decrease" data-passenger-type="infants" aria-label="Decrease infants">−</button>
+                  <span class="counter-value" id="count-infants">0</span>
+                  <button type="button" class="counter-btn" data-passenger-action="increase" data-passenger-type="infants" aria-label="Increase infants">+</button>
+                </div>
+              </div>
+
+              <div class="helper-text" id="passenger-note">Each infant must travel with an adult.</div>
+
+              <div class="passenger-panel-footer">
+                <button id="passenger-done" class="btn" type="button">Done</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="field small">
