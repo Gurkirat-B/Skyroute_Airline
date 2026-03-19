@@ -22,8 +22,8 @@
     </div>
 
     <div class="container page-header">
-      <h1>Payment</h1>
-      <p>Review your total and complete your booking securely.</p>
+      <h1>Review and Complete Payment</h1>
+      <p>Review your booking total, then confirm this simulated booking to see the final confirmation page.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -42,7 +42,7 @@
       <div class="main-left">
         <form id="payment-form" class="card">
           <h2>Payment Details</h2>
-          <p class="subtitle">Enter card information in the fields below.</p>
+          <p class="subtitle">Enter payment details to complete this mock checkout flow.</p>
           <div class="helper-text" style="margin-top:8px;">The total shown already includes taxes, fees, and any selected add-ons.</div>
 
           <div class="form-grid" style="margin-top:20px;">
@@ -73,10 +73,11 @@
           </div>
 
           <div class="status-pill" style="margin-top:20px;">Simulated payment only — no real charge</div>
+          <div class="flow-note">Select Confirm Booking to continue to the booking confirmation page.</div>
 
           <div class="button-row" style="margin-top:24px;">
             <a class="btn-secondary" href="Add-ons.html">Back to Add-ons</a>
-            <button class="btn" type="submit">Pay Now</button>
+            <button class="btn" type="submit">Confirm Booking</button>
           </div>
         </form>
       </div>
@@ -90,13 +91,15 @@
             <p id="payment-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Base Fare</div><div><strong>$650</strong></div></div>
-            <div class="summary-row"><div class="label">Seat Selection</div><div>$25</div></div>
-            <div class="summary-row"><div class="label">Add-ons</div><div>$35</div></div>
+            <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
+            <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="payment-base-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div id="payment-seat-price">$25</div></div>
+            <div class="summary-row"><div class="label">Add-ons</div><div id="payment-addons-price">$0</div></div>
             <div class="summary-row"><div class="label">Taxes & Fees</div><div>$85</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$795</strong></div>
-          <div class="note" style="margin-top:12px;">This is the final amount shown before confirmation.</div>
+          <div class="summary-total"><div>Total</div><strong id="payment-total">$289</strong></div>
+          <div class="note" style="margin-top:12px;">This final review includes the fare, selected seat, optional add-ons, and taxes.</div>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Seat Selection</h1>
-      <p>Choose your preferred seat now or continue with a standard seat assigned later.</p>
+      <p>Select your seat for this trip, then continue to optional add-ons.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -63,6 +63,7 @@
             <p class="muted">Selected Seat</p>
             <p id="selected-seat-output" style="font-size:18px; font-weight:700; margin-top:6px;">2B — Standard Seat</p>
           </div>
+          <div class="flow-note">Choose one seat to continue. Your current selection is highlighted in blue.</div>
         </div>
 
         <div class="button-row">
@@ -80,11 +81,13 @@
             <p id="seat-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Flight Fare</div><div><strong>$650</strong></div></div>
-            <div class="summary-row"><div class="label">Seat Selection</div><div>$25</div></div>
+            <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
+            <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
+            <div class="summary-row"><div class="label">Flight Fare</div><div><strong id="seat-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div id="seat-selection-price">$25</div></div>
             <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$675</strong></div>
+          <div class="summary-total"><div>Total</div><strong id="seat-total">$204</strong></div>
           <div class="note" style="margin-top:12px;">Selecting a preferred seat is optional and can be changed later if your fare allows.</div>
         </div>
       </div>

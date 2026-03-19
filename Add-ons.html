@@ -22,8 +22,8 @@
     </div>
 
     <div class="container page-header">
-      <h1>Add Extras to Your Trip</h1>
-      <p>Choose optional baggage, seat selection, and protection before payment. All add-ons are clearly optional.</p>
+      <h1>Choose Optional Add-ons</h1>
+      <p>Review optional services for this trip, then continue to payment when you are ready.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -42,31 +42,31 @@
       <div class="main-left">
         <div class="card">
           <h2>Optional Baggage</h2>
-          <p class="subtitle">Add extra baggage only if you need it.</p>
+          <p class="subtitle">Select one baggage option for this booking.</p>
           <div class="option-row" style="margin-top:20px;">
-            <div class="option-card selected"><div><h3>No Extra Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
-            <div class="option-card"><div><h3>1 Extra Bag</h3><p>Add one checked bag up to 23kg.</p></div><div class="option-bottom"><div class="price">$60</div><div class="tag">Select</div></div></div>
-            <div class="option-card"><div><h3>2 Extra Bags</h3><p>Add two checked bags for longer trips.</p></div><div class="option-bottom"><div class="price">$120</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="baggage" data-addon-name="No Extra Baggage" data-addon-price="0"><div><h3>No Extra Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable" data-addon-group="baggage" data-addon-name="1 Extra Bag" data-addon-price="60"><div><h3>1 Extra Bag</h3><p>Add one checked bag up to 23kg.</p></div><div class="option-bottom"><div class="price">$60</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable" data-addon-group="baggage" data-addon-name="2 Extra Bags" data-addon-price="120"><div><h3>2 Extra Bags</h3><p>Add two checked bags for longer trips.</p></div><div class="option-bottom"><div class="price">$120</div><div class="tag">Select</div></div></div>
           </div>
         </div>
 
         <div class="card">
-          <h2>Seat Selection</h2>
-          <p class="subtitle">Reserve your preferred seat before check-in.</p>
+          <h2>Seat Upgrade</h2>
+          <p class="subtitle">Select one seating option for the flight.</p>
           <div class="option-row" style="margin-top:20px;">
-            <div class="option-card selected"><div><h3>Standard Seat</h3><p>Random standard seat assigned at check-in.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
-            <div class="option-card"><div><h3>Window / Aisle</h3><p>Choose a preferred standard seat.</p></div><div class="option-bottom"><div class="price">$25</div><div class="tag">Select</div></div></div>
-            <div class="option-card"><div><h3>Extra Legroom</h3><p>More space for a more comfortable flight.</p></div><div class="option-bottom"><div class="price">$55</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="seat-option" data-addon-name="Standard Seat" data-addon-price="0"><div><h3>Standard Seat</h3><p>Keep a standard seat assignment with no extra charge.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable" data-addon-group="seat-option" data-addon-name="Window / Aisle" data-addon-price="25"><div><h3>Window / Aisle</h3><p>Choose a preferred standard seat location.</p></div><div class="option-bottom"><div class="price">$25</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable" data-addon-group="seat-option" data-addon-name="Extra Legroom" data-addon-price="55"><div><h3>Extra Legroom</h3><p>Add more space for a more comfortable journey.</p></div><div class="option-bottom"><div class="price">$55</div><div class="tag">Select</div></div></div>
           </div>
         </div>
 
         <div class="card">
           <h2>Travel Insurance</h2>
-          <p class="subtitle">Protection for trip interruptions and emergencies.</p>
+          <p class="subtitle">Select one protection option for this booking.</p>
           <div class="option-row" style="margin-top:20px;">
-            <div class="option-card selected"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
-            <div class="option-card"><div><h3>Basic Coverage</h3><p>Includes trip delay and baggage support.</p></div><div class="option-bottom"><div class="price">$18</div><div class="tag">Select</div></div></div>
-            <div class="option-card"><div><h3>Premium Coverage</h3><p>Expanded medical and cancellation protection.</p></div><div class="option-bottom"><div class="price">$40</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="insurance" data-addon-name="No Insurance" data-addon-price="0"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable" data-addon-group="insurance" data-addon-name="Basic Coverage" data-addon-price="18"><div><h3>Basic Coverage</h3><p>Includes trip delay and baggage support.</p></div><div class="option-bottom"><div class="price">$18</div><div class="tag">Select</div></div></div>
+            <div class="option-card selectable" data-addon-group="insurance" data-addon-name="Premium Coverage" data-addon-price="40"><div><h3>Premium Coverage</h3><p>Expanded medical and cancellation protection.</p></div><div class="option-bottom"><div class="price">$40</div><div class="tag">Select</div></div></div>
           </div>
         </div>
       </div>
@@ -80,13 +80,15 @@
             <p id="addons-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Base Fare</div><div><strong>$650</strong></div></div>
-            <div class="summary-row"><div class="label">Baggage</div><div>$0</div></div>
-            <div class="summary-row"><div class="label">Seat Selection</div><div>$0</div></div>
-            <div class="summary-row"><div class="label">Insurance</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
+            <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="addons-base-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Baggage</div><div id="addons-baggage-price">$0</div></div>
+            <div class="summary-row"><div class="label">Seat Upgrade</div><div id="addons-seat-option-price">$0</div></div>
+            <div class="summary-row"><div class="label">Insurance</div><div id="addons-insurance-price">$0</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$650</strong></div>
-          <div class="note" style="margin-top:12px;">Prices update based on selected add-ons. Optional services are not required to continue.</div>
+          <div class="summary-total"><div>Total</div><strong id="addons-total">$179</strong></div>
+          <div class="note" id="addons-selection-note" style="margin-top:12px;">Optional services are not required. Your selected options are highlighted.</div>
         </div>
 
         <a class="btn" href="payment.html">Continue to Payment</a>

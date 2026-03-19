@@ -93,6 +93,11 @@ a {
   border: 1px solid var(--primary);
 }
 
+.btn:hover,
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
 .hero {
   margin-top: 40px;
   min-height: 280px;
@@ -280,6 +285,10 @@ a {
 .progress {
   align-items: center;
   flex-wrap: wrap;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #F8FAFC;
 }
 
 .step {
@@ -310,6 +319,7 @@ a {
   background: #DBEAFE;
   border-color: var(--primary);
   color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 .step.pending .step-circle {
@@ -320,6 +330,12 @@ a {
 .step-label {
   font-size: 15px;
   font-weight: 500;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .step-line {
@@ -404,11 +420,25 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.option-card.selectable,
+.flight-card.selectable {
+  cursor: pointer;
+}
+
+.option-card.selectable:hover,
+.flight-card.selectable:hover {
+  border-color: #93C5FD;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+  transform: translateY(-2px);
 }
 
 .option-card.selected {
   background: #EFF6FF;
   border-color: #2563EB;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.14);
 }
 
 .option-top {
@@ -461,6 +491,13 @@ a {
   gap: 20px;
   align-items: center;
   justify-content: space-between;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.flight-card.selected {
+  border-color: #2563EB;
+  background: #EFF6FF;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.14);
 }
 
 .flight-meta {
@@ -730,6 +767,17 @@ select.input option {
   padding: 8px 14px;
   font-size: 14px;
   font-weight: 600;
+}
+
+.flow-note {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #DBEAFE;
+  background: #EFF6FF;
+  color: #1D4ED8;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .readonly-value {

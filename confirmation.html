@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Booking Confirmation</h1>
-      <p>Your trip has been successfully booked. Ticket details and next actions are shown below.</p>
+      <p>Your mock booking is complete. Review the confirmation details and next actions below.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -45,11 +45,12 @@
             <div class="success-icon">✓</div>
             <div>
               <h2 style="margin:0 0 8px; font-size:28px;">Booking Confirmed</h2>
-              <p class="subtitle">Your flight has been successfully booked.</p>
+              <p class="subtitle">Your itinerary is confirmed and ready for review.</p>
               <p class="subtitle" style="margin-top:8px;">
                 A confirmation email has been sent to
                 <strong id="confirm-email" style="color:#111827;">john@email.com</strong>.
               </p>
+              <p class="helper-text" style="margin-top:10px;">Thank you for booking with SkyRoute. Use your booking reference below if you need to review this itinerary.</p>
             </div>
           </div>
         </div>
@@ -65,7 +66,7 @@
             <div><strong>Flight Number:</strong> <span id="confirm-flight-number">SR 214</span></div>
             <div><strong>Seat:</strong> <span id="confirm-seat">2B</span></div>
             <div><strong>Status:</strong> Confirmed</div>
-            <div><strong>Total Paid:</strong> $795</div>
+            <div><strong>Total Paid:</strong> <span id="confirm-total-paid">$289</span></div>
           </div>
         </div>
 
@@ -89,11 +90,12 @@
             <p id="confirm-dates-side">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
+            <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Passenger</div><div><strong id="confirm-passenger-side">John Smith</strong></div></div>
             <div class="summary-row"><div class="label">Seat</div><div id="confirm-seat-side">2B</div></div>
             <div class="summary-row"><div class="label">Booking Ref</div><div id="confirm-reference-side">SR4K29</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$795</strong></div>
+          <div class="summary-total"><div>Total</div><strong id="confirm-total-side">$289</strong></div>
           <div class="note" style="margin-top:12px;">Keep your booking reference handy if you need to manage your booking later.</div>
         </div>
       </div>

@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   populateFlightDetails();
   populateBookingSummaries();
   setupSeatSelection();
+  setupAddonSelections();
   setupPassengerForm();
   setupPaymentForm();
   populateConfirmation();
+  populatePriceSummaries();
 });
 
 function setupHomeForm() {
@@ -34,6 +36,7 @@ function setupHomeForm() {
 
 function setupSearchResults() {
   const buttons = document.querySelectorAll(".select-flight");
+  const cards = document.querySelectorAll(".flight-card");
   const routeEl = document.getElementById("results-route");
   const metaEl = document.getElementById("results-meta");
   const booking = getBookingData();
@@ -46,6 +49,18 @@ function setupSearchResults() {
 
   if (metaEl) {
     metaEl.textContent = tripMeta;
+  }
+
+  if (booking.selectedFlightNumber) {
+    cards.forEach((card) => {
+      const flightNumber = card.querySelector(".flight-meta p")?.textContent.trim();
+      const action = card.querySelector(".select-flight");
+
+      if (flightNumber === booking.selectedFlightNumber) {
+        card.classList.add("selected");
+        if (action) action.textContent = "Selected Flight";
+      }
+    });
   }
 
   if (!buttons.length) return;
@@ -85,6 +100,8 @@ function populateBookingSummaries() {
   const booking = getBookingData();
   const route = getBookingRoute(booking);
   const tripMeta = getTripMeta(booking);
+  const passengers = booking.passengers || "1 Passenger";
+  const cabinClass = booking.cabinClass || "Economy";
 
   setText("results-route", route);
   setText("results-meta", tripMeta);
@@ -103,6 +120,14 @@ function populateBookingSummaries() {
 
   setText("details-route", route);
   setText("details-dates", tripMeta);
+
+  document.querySelectorAll("[data-booking-passengers]").forEach((el) => {
+    el.textContent = passengers;
+  });
+
+  document.querySelectorAll("[data-booking-class]").forEach((el) => {
+    el.textContent = cabinClass;
+  });
 }
 
 function setupSeatSelection() {
@@ -176,6 +201,28 @@ function setupPassengerForm() {
   });
 }
 
+function setupAddonSelections() {
+  const cards = document.querySelectorAll("[data-addon-group]");
+  if (!cards.length) return;
+
+  const booking = getBookingData();
+  const groups = ["baggage", "seat-option", "insurance"];
+
+  groups.forEach((group) => {
+    const savedName = booking[getAddonNameKey(group)];
+    const groupCards = document.querySelectorAll(`[data-addon-group="${group}"]`);
+    const savedCard = savedName
+      ? Array.from(groupCards).find((card) => card.dataset.addonName === savedName)
+      : groupCards[0];
+
+    if (savedCard) applyAddonSelection(savedCard, false);
+  });
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => applyAddonSelection(card, true));
+  });
+}
+
 function setupPaymentForm() {
   const form = document.getElementById("payment-form");
   if (!form) return;
@@ -227,6 +274,37 @@ function populateConfirmation() {
   setText("confirm-seat-side", booking.seat || "2B");
 }
 
+function populatePriceSummaries() {
+  const booking = getBookingData();
+  const baseFare = getBaseFareValue(booking);
+  const baggagePrice = Number(booking.baggagePrice || 0);
+  const seatOptionPrice = Number(booking["seat-optionPrice"] || 0);
+  const insurancePrice = Number(booking.insurancePrice || 0);
+  const seatSelectionPrice = booking.seat ? 25 : 0;
+  const addonsTotal = baggagePrice + insurancePrice;
+  const taxes = 85;
+  const paymentTotal = baseFare + seatOptionPrice + addonsTotal + taxes;
+  const seatPageTotal = baseFare + seatSelectionPrice;
+
+  setText("passenger-fare", formatCurrency(baseFare));
+  setText("passenger-total", formatCurrency(baseFare));
+  setText("seat-fare", formatCurrency(baseFare));
+  setText("seat-selection-price", formatCurrency(seatSelectionPrice));
+  setText("seat-total", formatCurrency(seatPageTotal));
+  setText("addons-base-fare", formatCurrency(baseFare));
+  setText("addons-baggage-price", formatCurrency(baggagePrice));
+  setText("addons-seat-option-price", formatCurrency(seatOptionPrice));
+  setText("addons-insurance-price", formatCurrency(insurancePrice));
+  setText("addons-total", formatCurrency(baseFare + baggagePrice + seatOptionPrice + insurancePrice));
+
+  setText("payment-base-fare", formatCurrency(baseFare));
+  setText("payment-seat-price", formatCurrency(seatOptionPrice));
+  setText("payment-addons-price", formatCurrency(addonsTotal));
+  setText("payment-total", formatCurrency(paymentTotal));
+  setText("confirm-total-paid", formatCurrency(paymentTotal));
+  setText("confirm-total-side", formatCurrency(paymentTotal));
+}
+
 function getBookingData() {
   const existing = localStorage.getItem("bookingData");
   return existing ? JSON.parse(existing) : {};
@@ -257,6 +335,60 @@ function getTripMeta(booking) {
   const passengers = booking.passengers || "1 Passenger";
   const cabinClass = booking.cabinClass || "Economy";
   return `${dates} · ${passengers} · ${cabinClass}`;
+}
+
+function getAddonNameKey(group) {
+  return `${group}Name`;
+}
+
+function getAddonPriceKey(group) {
+  return `${group}Price`;
+}
+
+function applyAddonSelection(card, persist) {
+  const group = card.dataset.addonGroup;
+  const groupCards = document.querySelectorAll(`[data-addon-group="${group}"]`);
+
+  groupCards.forEach((groupCard) => {
+    groupCard.classList.remove("selected");
+    const tag = groupCard.querySelector(".tag");
+    if (tag) tag.textContent = "Select";
+  });
+
+  card.classList.add("selected");
+  const activeTag = card.querySelector(".tag");
+  if (activeTag) activeTag.textContent = "Selected";
+
+  if (persist) {
+    const booking = getBookingData();
+    booking[getAddonNameKey(group)] = card.dataset.addonName;
+    booking[getAddonPriceKey(group)] = card.dataset.addonPrice;
+    saveBookingData(booking);
+  } else {
+    const booking = getBookingData();
+    booking[getAddonNameKey(group)] = card.dataset.addonName;
+    booking[getAddonPriceKey(group)] = card.dataset.addonPrice;
+    saveBookingData(booking);
+  }
+
+  const latestBooking = getBookingData();
+  const baggage = latestBooking.baggageName || "No Extra Baggage";
+  const seatOption = latestBooking["seat-optionName"] || "Standard Seat";
+  const insurance = latestBooking.insuranceName || "No Insurance";
+  setText(
+    "addons-selection-note",
+    `Selected options: ${baggage}, ${seatOption}, and ${insurance}.`
+  );
+  populatePriceSummaries();
+}
+
+function getBaseFareValue(booking) {
+  const raw = Number.parseInt((booking.selectedPrice || "$179").replace(/[^0-9]/g, ""), 10);
+  return Number.isNaN(raw) ? 179 : raw;
+}
+
+function formatCurrency(amount) {
+  return `$${amount}`;
 }
 
 function setText(id, value) {
