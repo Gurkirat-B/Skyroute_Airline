@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHomeForm();
   setupSearchResults();
   populateFlightDetails();
+  populateBookingSummaries();
   setupSeatSelection();
   setupPassengerForm();
   setupPaymentForm();
@@ -86,6 +87,33 @@ function populateFlightDetails() {
   setText("details-dates", formatDateRange(booking.departure, booking.returnDate));
   setText("details-fare", price);
   setText("details-total", price);
+}
+
+function populateBookingSummaries() {
+  const booking = getBookingData();
+  const route = `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
+  const dates = formatDateRange(booking.departure, booking.returnDate);
+  const passengers = booking.passengers || "1 Passenger";
+  const cabinClass = booking.cabinClass || "Economy";
+  const tripMeta = `${dates} · ${passengers} · ${cabinClass}`;
+
+  setText("results-route", route);
+  setText("results-meta", tripMeta);
+
+  setText("passenger-summary-route", route);
+  setText("passenger-summary-meta", tripMeta);
+
+  setText("seat-summary-route", route);
+  setText("seat-summary-dates", tripMeta);
+
+  setText("addons-summary-route", route);
+  setText("addons-summary-dates", tripMeta);
+
+  setText("payment-summary-route", route);
+  setText("payment-summary-dates", tripMeta);
+
+  setText("details-route", route);
+  setText("details-dates", tripMeta);
 }
 
 function setupSeatSelection() {
