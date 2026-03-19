@@ -15,8 +15,12 @@ function setupHomeForm() {
   const form = document.getElementById("home-booking-form");
   if (!form) return;
 
+  const departureInput = document.getElementById("departure");
+  const returnInput = document.getElementById("returnDate");
   const passengersSelect = document.getElementById("passengers");
   const classSelect = document.getElementById("cabinClass");
+
+  setupBookingDateLimits(departureInput, returnInput);
 
   [passengersSelect, classSelect].forEach((select) => {
     if (!select) return;
@@ -408,6 +412,30 @@ function generateReference() {
 function updateSelectPlaceholderState(select) {
   if (!select) return;
   select.classList.toggle("placeholder-select", !select.value);
+}
+
+function setupBookingDateLimits(departureInput, returnInput) {
+  if (!departureInput || !returnInput) return;
+
+  const today = getTodayString();
+  departureInput.min = today;
+  returnInput.min = today;
+
+  departureInput.addEventListener("change", () => {
+    const minReturn = departureInput.value || today;
+    returnInput.min = minReturn;
+
+    if (returnInput.value && returnInput.value < minReturn) {
+      returnInput.value = "";
+    }
+  });
+}
+
+function getTodayString() {
+  const now = new Date();
+  const offset = now.getTimezoneOffset();
+  const localDate = new Date(now.getTime() - offset * 60000);
+  return localDate.toISOString().split("T")[0];
 }
 
 function formatDateRange(departure, returnDate) {
