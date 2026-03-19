@@ -12,7 +12,7 @@
       <div class="container navbar-inner">
         <div class="logo">SkyRoute</div>
         <div class="nav-links">
-          <div class="active">Flights</div>
+          <div class="active">Book</div>
           <div>Manage Booking</div>
           <div>Check-In</div>
           <a href="support.html">Support</a>
@@ -32,20 +32,23 @@
         <div class="tab inactive">One Way</div>
         <div class="tab inactive">Multi-City</div>
       </div>
+      <div class="helper-text">
+  Enter your trip details below. Total pricing and optional add-ons will be shown clearly before payment.
+      </div>
 
       <div class="field-row">
         <div class="field">
-          <label for="from">From</label>
+          <label for="from" class="required">From</label>
           <input id="from" class="input" type="text" value="Toronto (YYZ)" />
         </div>
 
         <div class="field">
-          <label for="to">To</label>
+          <label for="to" class="required">To</label>
           <input id="to" class="input" type="text" value="London (LHR)" />
         </div>
 
         <div class="field">
-          <label for="departure">Departure</label>
+          <label for="departure" class="required">Departure</label>
           <input id="departure" class="input" type="date" value="2026-03-25" />
         </div>
 
@@ -55,7 +58,7 @@
         </div>
 
         <div class="field small">
-          <label for="passengers">Passengers</label>
+          <label for="passengers" class="required">Passengers</label>
           <select id="passengers" class="input">
             <option>1 Passenger</option>
             <option selected>2 Passengers</option>
@@ -65,7 +68,7 @@
         </div>
 
         <div class="field small">
-          <label for="cabinClass">Class</label>
+          <label for="cabinClass" class="required">Class</label>
           <select id="cabinClass" class="input">
             <option selected>Economy</option>
             <option>Premium Economy</option>
