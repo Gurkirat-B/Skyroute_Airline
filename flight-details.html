@@ -43,19 +43,20 @@
         <div class="card">
           <h2>Selected Flight</h2>
           <p class="subtitle">Your outbound flight choice.</p>
+          <div class="helper-text" id="selected-flight-number" style="margin-top:8px;">Flight SR 214</div>
           <div class="flight-times" style="margin-top:20px;">
             <div class="center">
-              <div class="time">8:30 AM</div>
-              <div class="city">Toronto (YYZ)</div>
+              <div class="time" id="selected-departure-time">8:30 AM</div>
+              <div class="city" id="selected-departure-city">Toronto (YYZ)</div>
             </div>
             <div class="flight-mid">
-              2h 45m · Nonstop
+              <span id="selected-duration">2h 45m · Nonstop</span>
               <div class="flight-line"></div>
               ✈
             </div>
             <div class="center">
-              <div class="time">10:15 AM</div>
-              <div class="city">London (LHR)</div>
+              <div class="time" id="selected-arrival-time">10:15 AM</div>
+              <div class="city" id="selected-arrival-city">London (LHR)</div>
             </div>
           </div>
         </div>
@@ -110,15 +111,15 @@
           <h2>Trip Summary</h2>
           <p class="subtitle">Review your selection before continuing.</p>
           <div class="summary-box" style="margin-top:16px;">
-            <h4>Toronto (YYZ) → London (LHR)</h4>
-            <p>25 Mar 2026 - 02 Apr 2026</p>
+            <h4 id="details-route">Toronto (YYZ) → London (LHR)</h4>
+            <p id="details-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
           <div style="margin-top:16px;">
-            <div class="summary-row"><div class="label">Fare</div><div><strong>$179</strong></div></div>
+            <div class="summary-row"><div class="label">Fare</div><div><strong id="details-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Seat</div><div>$0</div></div>
             <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
           </div>
-          <div class="summary-total"><div>Total</div><strong>$179</strong></div>
+          <div class="summary-total"><div>Total</div><strong id="details-total">$179</strong></div>
           <div class="note" style="margin-top:12px;">Your final total updates as you continue through the booking process.</div>
         </div>
       </div>
