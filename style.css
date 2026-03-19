@@ -692,6 +692,18 @@ input.input::placeholder {
   color: #94A3B8;
 }
 
+input.input:placeholder-shown {
+  color: #94A3B8;
+}
+
+select.input.placeholder-select {
+  color: #94A3B8;
+}
+
+select.input option {
+  color: var(--text);
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

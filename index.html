@@ -39,29 +39,30 @@
       <div class="field-row">
         <div class="field">
           <label for="from" class="required">From <span class="required-marker" aria-hidden="true">*</span></label>
-          <input id="from" class="input" type="text" value="Toronto (YYZ)" required />
+          <input id="from" class="input" type="text" placeholder="Enter departure city or airport" required />
         </div>
 
         <div class="field">
           <label for="to" class="required">To <span class="required-marker" aria-hidden="true">*</span></label>
-          <input id="to" class="input" type="text" value="London (LHR)" required />
+          <input id="to" class="input" type="text" placeholder="Enter destination city or airport" required />
         </div>
 
         <div class="field">
           <label for="departure" class="required">Departure Date <span class="required-marker" aria-hidden="true">*</span></label>
-          <input id="departure" class="input" type="date" value="2026-03-25" required />
+          <input id="departure" class="input" type="date" required />
         </div>
 
         <div class="field">
           <label for="returnDate">Return Date</label>
-          <input id="returnDate" class="input" type="date" value="2026-04-02" />
+          <input id="returnDate" class="input" type="date" />
         </div>
 
         <div class="field small">
           <label for="passengers" class="required">Passengers <span class="required-marker" aria-hidden="true">*</span></label>
           <select id="passengers" class="input" required>
+            <option value="" selected disabled>Select passengers</option>
             <option>1 Passenger</option>
-            <option selected>2 Passengers</option>
+            <option>2 Passengers</option>
             <option>3 Passengers</option>
             <option>4 Passengers</option>
           </select>
@@ -70,7 +71,8 @@
         <div class="field small">
           <label for="cabinClass" class="required">Cabin Class <span class="required-marker" aria-hidden="true">*</span></label>
           <select id="cabinClass" class="input" required>
-            <option selected>Economy</option>
+            <option value="" selected disabled>Select class</option>
+            <option>Economy</option>
             <option>Premium Economy</option>
             <option>Business</option>
             <option>First</option>

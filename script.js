@@ -13,14 +13,17 @@ function setupHomeForm() {
   const form = document.getElementById("home-booking-form");
   if (!form) return;
 
-  const booking = getBookingData();
+  const passengersSelect = document.getElementById("passengers");
+  const classSelect = document.getElementById("cabinClass");
 
-  setValue("from", booking.from || "Toronto (YYZ)");
-  setValue("to", booking.to || "London (LHR)");
-  setValue("departure", booking.departure || "2026-03-25");
-  setValue("returnDate", booking.returnDate || "2026-04-02");
-  setValue("passengers", booking.passengers || "2 Passengers");
-  setValue("cabinClass", booking.cabinClass || "Economy");
+  [passengersSelect, classSelect].forEach((select) => {
+    if (!select) return;
+
+    updateSelectPlaceholderState(select);
+    select.addEventListener("change", () => updateSelectPlaceholderState(select));
+  });
+
+  const booking = getBookingData();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -255,6 +258,11 @@ function setValue(id, value) {
 
 function generateReference() {
   return "SR" + Math.random().toString(36).slice(2, 7).toUpperCase();
+}
+
+function updateSelectPlaceholderState(select) {
+  if (!select) return;
+  select.classList.toggle("placeholder-select", !select.value);
 }
 
 function formatDateRange(departure, returnDate) {
