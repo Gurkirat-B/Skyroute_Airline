@@ -52,7 +52,19 @@
 
     <div class="container grid-main">
       <div class="main-left">
-        <div class="card flight-card selectable">
+        <div class="card results-tools">
+          <div>
+            <h2>EcoMatch Score</h2>
+            <p class="subtitle">EcoMatch Score combines price, travel time, stops, and environmental impact.</p>
+          </div>
+          <div class="sort-controls">
+            <button id="sort-match" class="sort-btn active" type="button">Prioritize Best Overall Match</button>
+            <button id="sort-eco" class="sort-btn" type="button">Prioritize Eco-Friendly Flights</button>
+          </div>
+        </div>
+
+        <div id="flight-results-list" class="results-list">
+        <div class="card flight-card selectable" data-flight-id="SR 214" data-price="179" data-duration="165" data-stops="0">
           <div class="flight-meta">
             <h3>SkyRoute Airlines</h3>
             <p>SR 214</p>
@@ -72,6 +84,16 @@
               <div class="city">London (LHR)</div>
             </div>
           </div>
+          <div class="flight-insight">
+            <div class="eco-highlight" data-eco-highlight hidden>Best Overall Match</div>
+            <div class="eco-match-row">
+              <div class="score-pill" data-match-score>89% Match</div>
+              <div class="eco-badge" data-eco-badge>Low Emission</div>
+            </div>
+            <div class="eco-copy" data-co2>320 kg CO2</div>
+            <div class="eco-copy" data-eco-savings>15% lower emissions than average</div>
+            <div class="eco-reason" data-match-reason>Best Value</div>
+          </div>
           <div class="flight-price">
             <div class="amount">$179</div>
             <div class="helper-text" style="margin-bottom:12px;">Total shown before seats and optional add-ons.</div>
@@ -87,7 +109,7 @@
           </div>
         </div>
 
-        <div class="card flight-card selectable">
+        <div class="card flight-card selectable" data-flight-id="SR 450" data-price="210" data-duration="190" data-stops="0">
           <div class="flight-meta">
             <h3>SkyRoute Airlines</h3>
             <p>SR 450</p>
@@ -107,6 +129,16 @@
               <div class="city">London (LHR)</div>
             </div>
           </div>
+          <div class="flight-insight">
+            <div class="eco-highlight" data-eco-highlight hidden>Best Overall Match</div>
+            <div class="eco-match-row">
+              <div class="score-pill" data-match-score>82% Match</div>
+              <div class="eco-badge" data-eco-badge>Moderate Emission</div>
+            </div>
+            <div class="eco-copy" data-co2>410 kg CO2</div>
+            <div class="eco-copy" data-eco-savings>Close to the average emissions for this route</div>
+            <div class="eco-reason" data-match-reason>Balanced Schedule</div>
+          </div>
           <div class="flight-price">
             <div class="amount">$210</div>
             <div class="helper-text" style="margin-bottom:12px;">Total shown before seats and optional add-ons.</div>
@@ -122,7 +154,7 @@
           </div>
         </div>
 
-        <div class="card flight-card selectable">
+        <div class="card flight-card selectable" data-flight-id="SR 882" data-price="165" data-duration="165" data-stops="0">
           <div class="flight-meta">
             <h3>SkyRoute Airlines</h3>
             <p>SR 882</p>
@@ -142,6 +174,16 @@
               <div class="city">London (LHR)</div>
             </div>
           </div>
+          <div class="flight-insight">
+            <div class="eco-highlight" data-eco-highlight hidden>Best Overall Match</div>
+            <div class="eco-match-row">
+              <div class="score-pill" data-match-score>86% Match</div>
+              <div class="eco-badge" data-eco-badge>Low Emission</div>
+            </div>
+            <div class="eco-copy" data-co2>295 kg CO2</div>
+            <div class="eco-copy" data-eco-savings>21% lower emissions than average</div>
+            <div class="eco-reason" data-match-reason>Fastest Option</div>
+          </div>
           <div class="flight-price">
             <div class="amount">$165</div>
             <div class="helper-text" style="margin-bottom:12px;">Total shown before seats and optional add-ons.</div>
@@ -156,12 +198,14 @@
             >Select Flight</a>
           </div>
         </div>
+        </div>
       </div>
 
       <div class="sidebar">
         <div class="card">
           <h2>Filters</h2>
-          <p class="subtitle">Narrow results by travel preferences and fare details.</p>
+          <p class="subtitle">Narrow results by travel preferences, fare details, and EcoMatch priorities.</p>
+          <div class="helper-text" style="margin-top:8px;">EcoMatch helps compare flights using overall fit and CO2 impact.</div>
           <div style="margin-top:16px; display:flex; flex-direction:column; gap:16px;">
             <div class="filter-group">
               <div class="filter-title">Stops</div>

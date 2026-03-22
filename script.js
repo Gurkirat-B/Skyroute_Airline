@@ -11,6 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
   populatePriceSummaries();
 });
 
+const ECO_MATCH_DATA = {
+  "SR 214": {
+    co2: 320,
+    ecoLevel: "Low",
+    ecoSavingsText: "15% lower emissions than average",
+    confidenceScore: 89,
+    matchReason: "Best Value",
+  },
+  "SR 450": {
+    co2: 410,
+    ecoLevel: "Moderate",
+    ecoSavingsText: "Close to the average emissions for this route",
+    confidenceScore: 82,
+    matchReason: "Balanced Schedule",
+  },
+  "SR 882": {
+    co2: 295,
+    ecoLevel: "Low",
+    ecoSavingsText: "21% lower emissions than average",
+    confidenceScore: 86,
+    matchReason: "Fastest Option",
+  },
+};
+
 function setupHomeForm() {
   const form = document.getElementById("home-booking-form");
   if (!form) return;
@@ -42,11 +66,15 @@ function setupHomeForm() {
 function setupSearchResults() {
   const buttons = document.querySelectorAll(".select-flight");
   const cards = document.querySelectorAll(".flight-card");
+  const list = document.getElementById("flight-results-list");
   const routeEl = document.getElementById("results-route");
   const metaEl = document.getElementById("results-meta");
+  const sortMatchButton = document.getElementById("sort-match");
+  const sortEcoButton = document.getElementById("sort-eco");
   const booking = getBookingData();
   const route = getBookingRoute(booking);
   const tripMeta = getTripMeta(booking);
+  let activeSort = booking.searchSortMode || "match";
 
   if (routeEl) {
     routeEl.textContent = route;
@@ -55,6 +83,8 @@ function setupSearchResults() {
   if (metaEl) {
     metaEl.textContent = tripMeta;
   }
+
+  cards.forEach((card) => populateEcoMatchCard(card));
 
   if (booking.selectedFlightNumber) {
     cards.forEach((card) => {
@@ -66,6 +96,27 @@ function setupSearchResults() {
         if (action) action.textContent = "Selected Flight";
       }
     });
+  }
+
+  if (list && sortMatchButton && sortEcoButton) {
+    sortMatchButton.addEventListener("click", () => {
+      activeSort = "match";
+      booking.searchSortMode = activeSort;
+      saveBookingData(booking);
+      applyFlightSort(list, cards, activeSort);
+      updateSortButtons(sortMatchButton, sortEcoButton, activeSort);
+    });
+
+    sortEcoButton.addEventListener("click", () => {
+      activeSort = "eco";
+      booking.searchSortMode = activeSort;
+      saveBookingData(booking);
+      applyFlightSort(list, cards, activeSort);
+      updateSortButtons(sortMatchButton, sortEcoButton, activeSort);
+    });
+
+    applyFlightSort(list, cards, activeSort);
+    updateSortButtons(sortMatchButton, sortEcoButton, activeSort);
   }
 
   if (!buttons.length) return;
@@ -80,6 +131,54 @@ function setupSearchResults() {
       saveBookingData(booking);
     });
   });
+}
+
+function populateEcoMatchCard(card) {
+  const flightId = card.dataset.flightId;
+  const ecoData = ECO_MATCH_DATA[flightId];
+  if (!ecoData) return;
+
+  setCardText(card, "[data-match-score]", `${ecoData.confidenceScore}% Match`);
+  setCardText(card, "[data-co2]", `${ecoData.co2} kg CO2`);
+  setCardText(card, "[data-eco-savings]", ecoData.ecoSavingsText);
+  setCardText(card, "[data-match-reason]", ecoData.matchReason);
+
+  const ecoBadge = card.querySelector("[data-eco-badge]");
+  if (ecoBadge) {
+    ecoBadge.textContent = `${ecoData.ecoLevel} Emission`;
+    ecoBadge.classList.remove("low", "moderate", "high");
+    ecoBadge.classList.add(ecoData.ecoLevel.toLowerCase());
+  }
+}
+
+function applyFlightSort(list, cards, mode) {
+  const orderedCards = Array.from(cards).sort((a, b) => {
+    const aData = ECO_MATCH_DATA[a.dataset.flightId];
+    const bData = ECO_MATCH_DATA[b.dataset.flightId];
+
+    if (mode === "eco") {
+      return aData.co2 - bData.co2;
+    }
+
+    return bData.confidenceScore - aData.confidenceScore;
+  });
+
+  orderedCards.forEach((card) => list.appendChild(card));
+
+  const topFlightId = orderedCards[0]?.dataset.flightId;
+  orderedCards.forEach((card) => {
+    const highlight = card.querySelector("[data-eco-highlight]");
+    if (!highlight) return;
+
+    const isTop = card.dataset.flightId === topFlightId;
+    highlight.hidden = !isTop;
+    highlight.textContent = mode === "eco" ? "Best Eco Option" : "Best Overall Match";
+  });
+}
+
+function updateSortButtons(matchButton, ecoButton, mode) {
+  matchButton.classList.toggle("active", mode === "match");
+  ecoButton.classList.toggle("active", mode === "eco");
 }
 
 function populateFlightDetails() {
@@ -394,6 +493,11 @@ function getBaseFareValue(booking) {
 
 function formatCurrency(amount) {
   return `$${amount}`;
+}
+
+function setCardText(card, selector, value) {
+  const el = card.querySelector(selector);
+  if (el) el.textContent = value;
 }
 
 function setText(id, value) {
