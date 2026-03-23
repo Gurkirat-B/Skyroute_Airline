@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  setupTheme();
   setupHomeForm();
   setupSearchResults();
   populateFlightDetails();
@@ -34,6 +35,50 @@ const ECO_MATCH_DATA = {
     matchReason: "Fastest Option",
   },
 };
+
+function setupTheme() {
+  const savedTheme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+  applyTheme(savedTheme);
+
+  const navbarInner = document.querySelector(".navbar-inner");
+  const signInButton = navbarInner?.querySelector(".btn");
+  if (!navbarInner || !signInButton) return;
+
+  let navActions = navbarInner.querySelector(".nav-actions");
+  if (!navActions) {
+    navActions = document.createElement("div");
+    navActions.className = "nav-actions";
+    signInButton.before(navActions);
+    navActions.appendChild(signInButton);
+  }
+
+  let toggleButton = navActions.querySelector(".theme-toggle");
+  if (!toggleButton) {
+    toggleButton = document.createElement("button");
+    toggleButton.type = "button";
+    toggleButton.className = "theme-toggle";
+    toggleButton.setAttribute("aria-label", "Toggle color theme");
+    navActions.prepend(toggleButton);
+  }
+
+  updateThemeToggleLabel(toggleButton);
+  toggleButton.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    applyTheme(nextTheme);
+    updateThemeToggleLabel(toggleButton);
+  });
+}
+
+function applyTheme(theme) {
+  document.body.classList.toggle("dark-mode", theme === "dark");
+  localStorage.setItem("theme", theme);
+}
+
+function updateThemeToggleLabel(button) {
+  if (!button) return;
+  const isDarkMode = document.body.classList.contains("dark-mode");
+  button.textContent = isDarkMode ? "☀️ Light" : "🌙 Dark";
+}
 
 function setupHomeForm() {
   const form = document.getElementById("home-booking-form");
