@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Review and Complete Payment</h1>
-      <p>Review your booking total, then confirm this simulated booking to see the final confirmation page.</p>
+      <p>Review your booking total, then confirm this simulated booking to continue to the confirmation page.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -42,10 +42,10 @@
       <div class="main-left">
         <form id="payment-form" class="card">
           <h2>Payment Details</h2>
-          <p class="subtitle">Enter payment details to complete this mock checkout flow.</p>
-          <div class="helper-text" style="margin-top:8px;">The total shown already includes taxes, fees, and any selected add-ons.</div>
+          <p class="subtitle">Enter payment details to complete this simulated checkout.</p>
+          <div class="helper-text helper-top">The total shown already includes taxes, fees, seat selection, and any selected add-ons.</div>
 
-          <div class="form-grid" style="margin-top:20px;">
+          <div class="form-grid spaced-top-md">
             <div class="field full">
               <label for="cardName" class="required">Cardholder Name <span class="required-marker" aria-hidden="true">*</span></label>
               <input id="cardName" class="input" type="text" placeholder="Name on card" required />
@@ -72,10 +72,10 @@
             </div>
           </div>
 
-          <div class="status-pill" style="margin-top:20px;">Simulated payment only — no real charge</div>
+          <div class="status-pill spaced-top-md">Simulated payment only. No real charge is processed.</div>
           <div class="flow-note">Select Confirm Booking to continue to the booking confirmation page.</div>
 
-          <div class="button-row" style="margin-top:24px;">
+          <div class="button-row spaced-top-lg">
             <a class="btn-secondary" href="Add-ons.html">Back to Add-ons</a>
             <button class="btn" type="submit">Confirm Booking</button>
           </div>
@@ -85,12 +85,12 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Final amount before payment.</p>
-          <div class="summary-box" style="margin-top:16px;">
+          <p class="subtitle">Final booking review before confirmation.</p>
+          <div class="summary-box summary-details">
             <h4 id="payment-summary-route">Toronto (YYZ) → London (LHR)</h4>
             <p id="payment-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
-          <div style="margin-top:16px;">
+          <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Base Fare</div><div><strong id="payment-base-fare">$179</strong></div></div>
@@ -99,7 +99,7 @@
             <div class="summary-row"><div class="label">Taxes & Fees</div><div>$85</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="payment-total">$289</strong></div>
-          <div class="note" style="margin-top:12px;">This final review includes the fare, selected seat, optional add-ons, and taxes.</div>
+          <div class="note summary-note">This final review includes your fare, selected seat, optional add-ons, taxes, and fees.</div>
         </div>
       </div>
     </div>

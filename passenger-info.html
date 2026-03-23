@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Enter Passenger Details</h1>
-      <p>Add traveler and contact details to continue to seat selection.</p>
+      <p>Enter traveler and contact details, then continue to seat selection.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -44,7 +44,7 @@
           <h2>Passenger Details</h2>
           <p class="subtitle">Complete the required travel information.</p>
 
-          <div class="form-grid" style="margin-top:20px;">
+          <div class="form-grid spaced-top-md">
             <div class="field">
               <label for="title" class="required">Title <span class="required-marker" aria-hidden="true">*</span></label>
               <select id="title" class="input" required>
@@ -81,10 +81,10 @@
             </div>
           </div>
 
-          <h2 style="margin-top:28px;">Contact Information</h2>
+          <h2 class="section-title-top">Contact Information</h2>
           <p class="subtitle">Used for confirmations and updates.</p>
 
-          <div class="form-grid" style="margin-top:20px;">
+          <div class="form-grid spaced-top-md">
             <div class="field">
               <label for="email" class="required">Email <span class="required-marker" aria-hidden="true">*</span></label>
               <input id="email" class="input" type="email" placeholder="Email address" required />
@@ -97,7 +97,7 @@
             </div>
           </div>
 
-          <div class="button-row" style="margin-top:24px;">
+          <div class="button-row spaced-top-lg">
             <a class="btn-secondary" href="flight-details.html">Back to Flight Details</a>
             <button class="btn" type="submit">Continue to Seats</button>
           </div>
@@ -107,20 +107,20 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Review your selection before continuing.</p>
-          <div class="summary-box" style="margin-top:16px;">
+          <p class="subtitle">Review your booking details before continuing.</p>
+          <div class="summary-box summary-details">
             <h4 id="passenger-summary-route">Toronto (YYZ) → London (LHR)</h4>
-            <p id="passenger-summary-meta">25 Mar 2026 - 02 Apr 2026 · Guests: 1</p>
+            <p id="passenger-summary-meta">25 Mar 2026 - 02 Apr 2026 · 1 Passenger · Economy</p>
           </div>
-          <div style="margin-top:16px;">
+          <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Flight Fare</div><div><strong id="passenger-fare">$179</strong></div></div>
-            <div class="summary-row"><div class="label">Seat</div><div>$0</div></div>
-            <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Optional Add-ons</div><div>$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="passenger-total">$179</strong></div>
-          <div class="note" style="margin-top:12px;">Please review passenger details carefully before continuing.</div>
+          <div class="note summary-note">Please review traveler details carefully before continuing to seat selection.</div>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Review Flight and Fare</h1>
-      <p>Check your selected flight and fare details, then continue to passenger information.</p>
+      <p>Review your selected flight and fare details, then continue to passenger information.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -42,9 +42,9 @@
       <div class="main-left">
         <div class="card">
           <h2>Selected Flight</h2>
-          <p class="subtitle">Your outbound flight choice.</p>
-          <div class="helper-text" id="selected-flight-number" style="margin-top:8px;">Flight SR 214</div>
-          <div class="flight-times" style="margin-top:20px;">
+          <p class="subtitle">Review the schedule and fare details for your selected flight.</p>
+          <div class="helper-text helper-top" id="selected-flight-number">Flight SR 214</div>
+          <div class="flight-times spaced-top-md">
             <div class="center">
               <div class="time" id="selected-departure-time">8:30 AM</div>
               <div class="city" id="selected-departure-city">Toronto (YYZ)</div>
@@ -63,8 +63,8 @@
 
         <div class="card">
           <h2>Fare Comparison</h2>
-          <p class="subtitle">Your current fare is highlighted so it is clear what is included before the next step.</p>
-          <div class="option-row" style="margin-top:20px;">
+          <p class="subtitle">Your selected fare is highlighted so included benefits stay clear before the next step.</p>
+          <div class="option-row spaced-top-md">
             <div class="option-card selected">
               <div>
                 <div class="option-top"><h3>Basic</h3></div>
@@ -90,9 +90,9 @@
         </div>
 
         <div class="card">
-          <h2>What’s Included</h2>
-          <p class="subtitle">Clear fare details reduce surprises at checkout.</p>
-          <div class="split-2" style="margin-top:20px;">
+          <h2>Included in Your Fare</h2>
+          <p class="subtitle">Review the key fare details before continuing.</p>
+          <div class="split-2 spaced-top-md">
             <div>• 1 personal item included</div>
             <div>• Cabin baggage policy shown clearly</div>
             <div>• Change policy visible before payment</div>
@@ -109,20 +109,20 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Review your selection before continuing.</p>
-          <div class="summary-box" style="margin-top:16px;">
+          <p class="subtitle">Review your booking details before continuing.</p>
+          <div class="summary-box summary-details">
             <h4 id="details-route">Toronto (YYZ) → London (LHR)</h4>
             <p id="details-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
-          <div style="margin-top:16px;">
+          <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Fare</div><div><strong id="details-fare">$179</strong></div></div>
-            <div class="summary-row"><div class="label">Seat</div><div>$0</div></div>
-            <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Seat Selection</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Optional Add-ons</div><div>$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="details-total">$179</strong></div>
-          <div class="note" style="margin-top:12px;">Your final total updates as you continue through the booking process.</div>
+          <div class="note summary-note">Your total updates automatically as you continue through the booking process.</div>
         </div>
       </div>
     </div>

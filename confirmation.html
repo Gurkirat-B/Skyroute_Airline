@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Booking Confirmation</h1>
-      <p>Your mock booking is complete. Review the confirmation details and next actions below.</p>
+      <p>Your booking is complete. Review the confirmation details and next steps below.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -45,12 +45,12 @@
             <div class="success-icon">✓</div>
             <div>
               <h2 style="margin:0 0 8px; font-size:28px;">Booking Confirmed</h2>
-              <p class="subtitle">Your itinerary is confirmed and ready for review.</p>
-              <p class="subtitle" style="margin-top:8px;">
+              <p class="subtitle">Your itinerary has been confirmed and is ready for review.</p>
+              <p class="subtitle helper-top">
                 A confirmation email has been sent to
                 <strong id="confirm-email" style="color:var(--text);">john@email.com</strong>.
               </p>
-              <p class="helper-text" style="margin-top:10px;">Thank you for booking with SkyRoute. Use your booking reference below if you need to review this itinerary.</p>
+              <p class="helper-text helper-top">Thank you for booking with SkyRoute. Keep your booking reference below if you need to review this itinerary later.</p>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="card">
           <h2>Ticket Details</h2>
           <p class="subtitle">Reference information for your confirmed booking.</p>
-          <div class="ticket-grid" style="margin-top:20px;">
+          <div class="ticket-grid spaced-top-md">
             <div><strong>Passenger:</strong> <span id="confirm-passenger">John Smith</span></div>
             <div><strong>Booking Ref:</strong> <span id="confirm-reference">SR4K29</span></div>
             <div><strong>Route:</strong> <span id="confirm-route">Toronto (YYZ) → London (LHR)</span></div>
@@ -72,8 +72,8 @@
 
         <div class="card">
           <h2>Next Actions</h2>
-          <p class="subtitle">Choose what you want to do next.</p>
-          <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+          <p class="subtitle">Choose your next step.</p>
+          <div class="sidebar-actions spaced-top-md">
             <a class="btn" href="#">Download Ticket</a>
             <a class="btn-secondary" href="#">Email Ticket</a>
             <a class="btn-secondary" href="index.html">Return to Home</a>
@@ -85,18 +85,18 @@
         <div class="card">
           <h2>Trip Summary</h2>
           <p class="subtitle">Confirmed booking overview.</p>
-          <div class="summary-box" style="margin-top:16px;">
+          <div class="summary-box summary-details">
             <h4 class="readonly-value" id="confirm-route-side">Toronto (YYZ) → London (LHR)</h4>
             <p id="confirm-dates-side">25 Mar 2026 - 02 Apr 2026</p>
           </div>
-          <div style="margin-top:16px;">
+          <div class="summary-details">
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Passenger</div><div><strong id="confirm-passenger-side">John Smith</strong></div></div>
             <div class="summary-row"><div class="label">Seat</div><div id="confirm-seat-side">2B</div></div>
             <div class="summary-row"><div class="label">Booking Ref</div><div id="confirm-reference-side">SR4K29</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="confirm-total-side">$289</strong></div>
-          <div class="note" style="margin-top:12px;">Keep your booking reference handy if you need to manage your booking later.</div>
+          <div class="note summary-note">Keep your booking reference handy if you need support or changes later.</div>
         </div>
       </div>
     </div>

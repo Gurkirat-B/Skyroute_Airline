@@ -22,8 +22,8 @@
     </div>
 
     <div class="container page-header">
-      <h1>Seat Selection</h1>
-      <p>Select your seat for this trip, then continue to optional add-ons.</p>
+      <h1>Select Your Seat</h1>
+      <p>Choose a seat for this trip, then continue to optional add-ons.</p>
 
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
@@ -42,9 +42,9 @@
       <div class="main-left">
         <div class="card">
           <h2>Select Your Seat</h2>
-          <p class="subtitle">Available, selected, and unavailable seats are shown clearly below.</p>
+          <p class="subtitle">Choose one seat from the map below to continue.</p>
 
-          <div class="seat-grid" style="margin-top:20px;">
+          <div class="seat-grid spaced-top-md">
             <div class="seat-row"><div class="row-number">1</div><div class="seat" data-seat="1A">A</div><div class="seat" data-seat="1B">B</div><div class="seat unavailable">C</div><div class="aisle"></div><div class="seat" data-seat="1D">D</div><div class="seat" data-seat="1E">E</div><div class="seat" data-seat="1F">F</div></div>
             <div class="seat-row"><div class="row-number">2</div><div class="seat" data-seat="2A">A</div><div class="seat selected" data-seat="2B">B</div><div class="seat" data-seat="2C">C</div><div class="aisle"></div><div class="seat unavailable">D</div><div class="seat" data-seat="2E">E</div><div class="seat" data-seat="2F">F</div></div>
             <div class="seat-row"><div class="row-number">3</div><div class="seat unavailable">A</div><div class="seat" data-seat="3B">B</div><div class="seat" data-seat="3C">C</div><div class="aisle"></div><div class="seat" data-seat="3D">D</div><div class="seat" data-seat="3E">E</div><div class="seat" data-seat="3F">F</div></div>
@@ -61,7 +61,7 @@
 
           <div class="selected-seat-box">
             <p class="muted">Selected Seat</p>
-            <p id="selected-seat-output" style="font-size:18px; font-weight:700; margin-top:6px;">2B — Standard Seat</p>
+            <p id="selected-seat-output" class="selected-seat-value">2B — Standard Seat</p>
           </div>
           <div class="flow-note">Choose one seat to continue. Your current selection is highlighted in blue.</div>
         </div>
@@ -75,20 +75,20 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Review your selection before continuing.</p>
-          <div class="summary-box" style="margin-top:16px;">
+          <p class="subtitle">Review your booking details before continuing.</p>
+          <div class="summary-box summary-details">
             <h4 id="seat-summary-route">Toronto (YYZ) → London (LHR)</h4>
             <p id="seat-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
           </div>
-          <div style="margin-top:16px;">
+          <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
             <div class="summary-row"><div class="label">Flight Fare</div><div><strong id="seat-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Seat Selection</div><div id="seat-selection-price">$25</div></div>
-            <div class="summary-row"><div class="label">Add-ons</div><div>$0</div></div>
+            <div class="summary-row"><div class="label">Optional Add-ons</div><div>$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="seat-total">$204</strong></div>
-          <div class="note" style="margin-top:12px;">Selecting a preferred seat is optional and can be changed later if your fare allows.</div>
+          <div class="note summary-note">Preferred seat selection is optional and may be changed later, depending on your fare.</div>
         </div>
       </div>
     </div>
