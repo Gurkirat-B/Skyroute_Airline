@@ -67,6 +67,8 @@ function setupSearchResults() {
   const buttons = document.querySelectorAll(".select-flight");
   const cards = document.querySelectorAll(".flight-card");
   const list = document.getElementById("flight-results-list");
+  const departureCities = document.querySelectorAll(".flight-departure-city");
+  const arrivalCities = document.querySelectorAll(".flight-arrival-city");
   const routeEl = document.getElementById("results-route");
   const metaEl = document.getElementById("results-meta");
   const sortMatchButton = document.getElementById("sort-match");
@@ -83,6 +85,14 @@ function setupSearchResults() {
   if (metaEl) {
     metaEl.textContent = tripMeta;
   }
+
+  departureCities.forEach((el) => {
+    el.textContent = booking.from || "Toronto (YYZ)";
+  });
+
+  arrivalCities.forEach((el) => {
+    el.textContent = booking.to || "London (LHR)";
+  });
 
   cards.forEach((card) => populateEcoMatchCard(card));
 
@@ -204,7 +214,10 @@ function populateBookingSummaries() {
   const booking = getBookingData();
   const route = getBookingRoute(booking);
   const tripMeta = getTripMeta(booking);
-  const passengers = booking.passengers || "1 Passenger";
+  const passengers =
+    booking.passengerSummary ||
+    booking.passengers ||
+    formatPassengerSummary({ adults: 1, children: 0, infants: 0 });
   const cabinClass = booking.cabinClass || "Economy";
 
   setText("results-route", route);
@@ -405,11 +418,12 @@ function populatePriceSummaries() {
 
 function getBookingData() {
   const existing = localStorage.getItem("bookingData");
-  return existing ? JSON.parse(existing) : {};
+  const parsed = existing ? JSON.parse(existing) : {};
+  return normalizeBookingData(parsed);
 }
 
 function saveBookingData(booking) {
-  localStorage.setItem("bookingData", JSON.stringify(booking));
+  localStorage.setItem("bookingData", JSON.stringify(normalizeBookingData(booking)));
 }
 
 function getHomeBookingData(passengerData) {
@@ -424,13 +438,49 @@ function getHomeBookingData(passengerData) {
   };
 }
 
+function normalizeBookingData(booking) {
+  const adults = getNormalizedCount(booking.adults, getLegacyPassengerCount(booking.passengers));
+  const children = getNormalizedCount(booking.children, 0);
+  const infants = Math.min(getNormalizedCount(booking.infants, 0), adults);
+  const totalPassengers = adults + children + infants;
+  const passengerSummary =
+    booking.passengerSummary ||
+    booking.passengers ||
+    formatPassengerSummary({ adults, children, infants });
+
+  return {
+    ...booking,
+    from: booking.from || "",
+    to: booking.to || "",
+    departure: booking.departure || "",
+    returnDate: booking.returnDate || "",
+    adults,
+    children,
+    infants,
+    totalPassengers,
+    passengerSummary,
+    passengers: passengerSummary,
+    cabinClass: booking.cabinClass || "",
+  };
+}
+
+function getNormalizedCount(value, fallback) {
+  const count = Number(value);
+  return Number.isNaN(count) ? fallback : Math.max(0, count);
+}
+
 function getBookingRoute(booking) {
   return `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
 }
 
 function getTripMeta(booking) {
   const dates = formatDateRange(booking.departure, booking.returnDate);
-  const passengers = booking.passengers || "1 Passenger";
+  const passengers =
+    booking.passengerSummary || booking.passengers || formatPassengerSummary({
+      adults: booking.adults || 1,
+      children: booking.children || 0,
+      infants: booking.infants || 0,
+    });
   const cabinClass = booking.cabinClass || "Economy";
   return `${dates} · ${passengers} · ${cabinClass}`;
 }
