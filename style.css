@@ -408,7 +408,9 @@ a {
 
 .footer {
   margin-top: auto;
-  height: 90px;
+  margin-top: 48px;
+  min-height: 64px;
+  padding: 16px 0;
   background: var(--primary-dark);
   display: flex;
   align-items: center;
