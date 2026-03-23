@@ -185,6 +185,9 @@ a {
 }
 
 .tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   border-radius: 999px;
   font-size: 14px;
@@ -199,6 +202,27 @@ a {
 .tab.inactive {
   background: var(--surface-alt);
   color: var(--text-muted);
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-section h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.search-card .form-section + .form-section {
+  margin-top: 8px;
 }
 
 .field {

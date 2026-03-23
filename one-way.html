@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyRoute - Home</title>
+  <title>SkyRoute - One Way</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,18 +22,18 @@
     </div>
 
     <div class="container hero">
-      <h1>Book Flights with Clear Pricing</h1>
-      <p>Compare flights, choose add-ons clearly, and see your total before checkout.</p>
+      <h1>Book One-Way Flights with Clear Pricing</h1>
+      <p>Search a single outbound journey, compare options clearly, and review pricing before checkout.</p>
     </div>
 
-    <form id="home-booking-form" class="container card search-card" data-trip-type="round-trip">
+    <form id="home-booking-form" class="container card search-card" data-trip-type="one-way">
       <div class="tab-row">
-        <a class="tab active" href="index.html" aria-current="page">Round Trip</a>
-        <a class="tab inactive" href="one-way.html">One Way</a>
+        <a class="tab inactive" href="index.html">Round Trip</a>
+        <a class="tab active" href="one-way.html" aria-current="page">One Way</a>
         <a class="tab inactive" href="multi-city.html">Multi-City</a>
       </div>
       <div class="helper-text">
-        Enter your trip details below. Fare pricing, taxes, and optional add-ons are shown before payment.
+        Enter your one-way trip details below. Fare pricing, taxes, and optional add-ons are shown before payment.
       </div>
       <div class="progress">
         <div class="step active"><div class="step-circle">1</div><div class="step-label">Flights</div></div>
@@ -61,11 +61,6 @@
         <div class="field">
           <label for="departure" class="required">Departure Date <span class="required-marker" aria-hidden="true">*</span></label>
           <input id="departure" class="input" type="date" required />
-        </div>
-
-        <div class="field">
-          <label for="returnDate">Return Date</label>
-          <input id="returnDate" class="input" type="date" />
         </div>
 
         <div class="field small passenger-field">

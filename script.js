@@ -41,10 +41,13 @@ function setupHomeForm() {
 
   const departureInput = document.getElementById("departure");
   const returnInput = document.getElementById("returnDate");
+  const leg1DateInput = document.getElementById("leg1Date");
+  const leg2DateInput = document.getElementById("leg2Date");
   const classSelect = document.getElementById("cabinClass");
   const passengerSelector = setupPassengerSelector();
 
   setupBookingDateLimits(departureInput, returnInput);
+  setupMultiCityDateLimits(leg1DateInput, leg2DateInput);
 
   [classSelect].forEach((select) => {
     if (!select) return;
@@ -57,7 +60,7 @@ function setupHomeForm() {
     e.preventDefault();
 
     const passengerData = passengerSelector ? passengerSelector.getValue() : getDefaultPassengerData();
-    const booking = getHomeBookingData(passengerData);
+    const booking = getHomeBookingData(form, passengerData);
     saveBookingData(booking);
     window.location.href = "search-results.html";
   });
@@ -205,7 +208,7 @@ function populateFlightDetails() {
   setText("selected-departure-city", booking.from || "Toronto (YYZ)");
   setText("selected-arrival-city", booking.to || "London (LHR)");
   setText("details-route", route);
-  setText("details-dates", formatDateRange(booking.departure, booking.returnDate));
+  setText("details-dates", getBookingDateSummary(booking));
   setText("details-fare", price);
   setText("details-total", price);
 }
@@ -375,7 +378,7 @@ function populateConfirmation() {
   const passengerName =
     [booking.firstName, booking.lastName].filter(Boolean).join(" ") || "John Smith";
   const route = getBookingRoute(booking);
-  const dates = formatDateRange(booking.departure, booking.returnDate);
+  const dates = getBookingDateSummary(booking);
 
   setText("confirm-email", booking.email || "john@email.com");
   setText("confirm-passenger", passengerName);
@@ -426,19 +429,68 @@ function saveBookingData(booking) {
   localStorage.setItem("bookingData", JSON.stringify(normalizeBookingData(booking)));
 }
 
-function getHomeBookingData(passengerData) {
-  return {
+function getHomeBookingData(form, passengerData) {
+  const tripType = form?.dataset.tripType || "round-trip";
+  const baseBooking = {
     ...getBookingData(),
-    from: document.getElementById("from")?.value.trim() || "",
-    to: document.getElementById("to")?.value.trim() || "",
-    departure: document.getElementById("departure")?.value || "",
-    returnDate: document.getElementById("returnDate")?.value || "",
+    tripType,
+    from: "",
+    to: "",
+    departure: "",
+    returnDate: "",
+    leg1From: "",
+    leg1To: "",
+    leg1Date: "",
+    leg2From: "",
+    leg2To: "",
+    leg2Date: "",
+  };
+
+  if (tripType === "multi-city") {
+    const leg1From = document.getElementById("leg1From")?.value.trim() || "";
+    const leg1To = document.getElementById("leg1To")?.value.trim() || "";
+    const leg1Date = document.getElementById("leg1Date")?.value || "";
+    const leg2From = document.getElementById("leg2From")?.value.trim() || "";
+    const leg2To = document.getElementById("leg2To")?.value.trim() || "";
+    const leg2Date = document.getElementById("leg2Date")?.value || "";
+
+    return {
+      ...baseBooking,
+      cabinClass: document.getElementById("cabinClass")?.value || "",
+      from: leg1From,
+      to: leg1To,
+      departure: leg1Date,
+      returnDate: leg2Date,
+      leg1From,
+      leg1To,
+      leg1Date,
+      leg2From,
+      leg2To,
+      leg2Date,
+      ...passengerData,
+    };
+  }
+
+  const from = document.getElementById("from")?.value.trim() || "";
+  const to = document.getElementById("to")?.value.trim() || "";
+  const departure = document.getElementById("departure")?.value || "";
+  const returnDate = tripType === "round-trip"
+    ? document.getElementById("returnDate")?.value || ""
+    : "";
+
+  return {
+    ...baseBooking,
+    from,
+    to,
+    departure,
+    returnDate,
     cabinClass: document.getElementById("cabinClass")?.value || "",
     ...passengerData,
   };
 }
 
 function normalizeBookingData(booking) {
+  const tripType = getNormalizedTripType(booking);
   const adults = getNormalizedCount(booking.adults, getLegacyPassengerCount(booking.passengers));
   const children = getNormalizedCount(booking.children, 0);
   const infants = Math.min(getNormalizedCount(booking.infants, 0), adults);
@@ -450,10 +502,17 @@ function normalizeBookingData(booking) {
 
   return {
     ...booking,
-    from: booking.from || "",
-    to: booking.to || "",
-    departure: booking.departure || "",
-    returnDate: booking.returnDate || "",
+    tripType,
+    from: booking.from || booking.leg1From || "",
+    to: booking.to || booking.leg1To || "",
+    departure: booking.departure || booking.leg1Date || "",
+    returnDate: booking.returnDate || booking.leg2Date || "",
+    leg1From: booking.leg1From || "",
+    leg1To: booking.leg1To || "",
+    leg1Date: booking.leg1Date || "",
+    leg2From: booking.leg2From || "",
+    leg2To: booking.leg2To || "",
+    leg2Date: booking.leg2Date || "",
     adults,
     children,
     infants,
@@ -464,17 +523,29 @@ function normalizeBookingData(booking) {
   };
 }
 
+function getNormalizedTripType(booking) {
+  if (booking.tripType) return booking.tripType;
+  if (booking.leg1From || booking.leg1To || booking.leg2From || booking.leg2To) return "multi-city";
+  if (booking.departure && !booking.returnDate) return "one-way";
+  return "round-trip";
+}
+
 function getNormalizedCount(value, fallback) {
   const count = Number(value);
   return Number.isNaN(count) ? fallback : Math.max(0, count);
 }
 
 function getBookingRoute(booking) {
+  if (booking.tripType === "multi-city") {
+    const firstLeg = `${booking.leg1From || booking.from || "Toronto (YYZ)"} → ${booking.leg1To || booking.to || "London (LHR)"}`;
+    return booking.leg2From || booking.leg2To ? `${firstLeg} + 1 more` : firstLeg;
+  }
+
   return `${booking.from || "Toronto (YYZ)"} → ${booking.to || "London (LHR)"}`;
 }
 
 function getTripMeta(booking) {
-  const dates = formatDateRange(booking.departure, booking.returnDate);
+  const dates = getBookingDateSummary(booking);
   const passengers =
     booking.passengerSummary || booking.passengers || formatPassengerSummary({
       adults: booking.adults || 1,
@@ -482,7 +553,18 @@ function getTripMeta(booking) {
       infants: booking.infants || 0,
     });
   const cabinClass = booking.cabinClass || "Economy";
-  return `${dates} · ${passengers} · ${cabinClass}`;
+  const tripType = getTripTypeLabel(booking.tripType);
+  return `${dates} · ${passengers} · ${cabinClass} · ${tripType}`;
+}
+
+function getTripTypeLabel(tripType) {
+  const labels = {
+    "round-trip": "Round Trip",
+    "one-way": "One Way",
+    "multi-city": "Multi-City",
+  };
+
+  return labels[tripType] || "Round Trip";
 }
 
 function getAddonNameKey(group) {
@@ -778,13 +860,17 @@ function getDefaultPassengerData() {
 }
 
 function setupBookingDateLimits(departureInput, returnInput) {
-  if (!departureInput || !returnInput) return;
+  if (!departureInput) return;
 
   const today = getTodayString();
   departureInput.min = today;
-  returnInput.min = today;
+  if (returnInput) {
+    returnInput.min = today;
+  }
 
   departureInput.addEventListener("change", () => {
+    if (!returnInput) return;
+
     const minReturn = departureInput.value || today;
     returnInput.min = minReturn;
 
@@ -792,6 +878,37 @@ function setupBookingDateLimits(departureInput, returnInput) {
       returnInput.value = "";
     }
   });
+}
+
+function setupMultiCityDateLimits(leg1Input, leg2Input) {
+  if (!leg1Input || !leg2Input) return;
+
+  const today = getTodayString();
+  leg1Input.min = today;
+  leg2Input.min = today;
+
+  leg1Input.addEventListener("change", () => {
+    const minLeg2 = leg1Input.value || today;
+    leg2Input.min = minLeg2;
+
+    if (leg2Input.value && leg2Input.value < minLeg2) {
+      leg2Input.value = "";
+    }
+  });
+}
+
+function getBookingDateSummary(booking) {
+  if (booking.tripType === "one-way") {
+    return formatDisplayDate(booking.departure) || "25 Mar 2026";
+  }
+
+  if (booking.tripType === "multi-city") {
+    const leg1Date = formatDisplayDate(booking.leg1Date || booking.departure) || "25 Mar 2026";
+    const leg2Date = formatDisplayDate(booking.leg2Date || booking.returnDate) || "02 Apr 2026";
+    return `Leg 1: ${leg1Date} · Leg 2: ${leg2Date}`;
+  }
+
+  return formatDateRange(booking.departure, booking.returnDate);
 }
 
 function getTodayString() {
