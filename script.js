@@ -380,33 +380,27 @@ function populateConfirmation() {
 
 function populatePriceSummaries() {
   const booking = getBookingData();
-  const baseFare = getBaseFareValue(booking);
-  const baggagePrice = Number(booking.baggagePrice || 0);
-  const seatOptionPrice = Number(booking["seat-optionPrice"] || 0);
-  const insurancePrice = Number(booking.insurancePrice || 0);
-  const seatSelectionPrice = booking.seat ? 25 : 0;
-  const addonsTotal = baggagePrice + insurancePrice;
-  const taxes = 85;
-  const paymentTotal = baseFare + seatOptionPrice + addonsTotal + taxes;
-  const seatPageTotal = baseFare + seatSelectionPrice;
+  const totals = getPriceTotals(booking);
+  const seatPageTotal = totals.baseFare + totals.seatSelectionPrice;
 
-  setText("passenger-fare", formatCurrency(baseFare));
-  setText("passenger-total", formatCurrency(baseFare));
-  setText("seat-fare", formatCurrency(baseFare));
-  setText("seat-selection-price", formatCurrency(seatSelectionPrice));
+  setText("passenger-fare", formatCurrency(totals.baseFare));
+  setText("passenger-total", formatCurrency(totals.baseFare));
+  setText("seat-fare", formatCurrency(totals.baseFare));
+  setText("seat-selection-price", formatCurrency(totals.seatSelectionPrice));
   setText("seat-total", formatCurrency(seatPageTotal));
-  setText("addons-base-fare", formatCurrency(baseFare));
-  setText("addons-baggage-price", formatCurrency(baggagePrice));
-  setText("addons-seat-option-price", formatCurrency(seatOptionPrice));
-  setText("addons-insurance-price", formatCurrency(insurancePrice));
-  setText("addons-total", formatCurrency(baseFare + baggagePrice + seatOptionPrice + insurancePrice));
+  setText("addons-base-fare", formatCurrency(totals.baseFare));
+  setText("addons-baggage-price", formatCurrency(totals.baggagePrice));
+  setText("addons-seat-option-price", formatCurrency(totals.seatOptionPrice));
+  setText("addons-insurance-price", formatCurrency(totals.insurancePrice));
+  setText("addons-total", formatCurrency(totals.addonsPageTotal));
 
-  setText("payment-base-fare", formatCurrency(baseFare));
-  setText("payment-seat-price", formatCurrency(seatOptionPrice));
-  setText("payment-addons-price", formatCurrency(addonsTotal));
-  setText("payment-total", formatCurrency(paymentTotal));
-  setText("confirm-total-paid", formatCurrency(paymentTotal));
-  setText("confirm-total-side", formatCurrency(paymentTotal));
+  setText("payment-base-fare", formatCurrency(totals.baseFare));
+  setText("payment-seat-price", formatCurrency(totals.seatOptionPrice));
+  setText("payment-addons-price", formatCurrency(totals.addonsTotal));
+  setText("payment-total", formatCurrency(totals.paymentTotal));
+  setText("confirm-total-paid", formatCurrency(totals.paymentTotal));
+  setText("confirm-total-side", formatCurrency(totals.paymentTotal));
+  updatePriceChangeAlert(booking);
 }
 
 function getBookingData() {
@@ -463,17 +457,12 @@ function applyAddonSelection(card, persist) {
   const activeTag = card.querySelector(".tag");
   if (activeTag) activeTag.textContent = "Selected";
 
-  if (persist) {
-    const booking = getBookingData();
-    booking[getAddonNameKey(group)] = card.dataset.addonName;
-    booking[getAddonPriceKey(group)] = card.dataset.addonPrice;
-    saveBookingData(booking);
-  } else {
-    const booking = getBookingData();
-    booking[getAddonNameKey(group)] = card.dataset.addonName;
-    booking[getAddonPriceKey(group)] = card.dataset.addonPrice;
-    saveBookingData(booking);
-  }
+  const booking = getBookingData();
+  const previousPrice = Number(booking[getAddonPriceKey(group)] || 0);
+  const nextPrice = Number(card.dataset.addonPrice || 0);
+  booking[getAddonNameKey(group)] = card.dataset.addonName;
+  booking[getAddonPriceKey(group)] = String(nextPrice);
+  saveBookingData(booking);
 
   const latestBooking = getBookingData();
   const baggage = latestBooking.baggageName || "No Extra Baggage";
@@ -483,6 +472,7 @@ function applyAddonSelection(card, persist) {
     "addons-selection-note",
     `Selected options: ${baggage}, ${seatOption}, and ${insurance}.`
   );
+  updatePriceChangeAlert(latestBooking, group, previousPrice, nextPrice);
   populatePriceSummaries();
 }
 
@@ -493,6 +483,60 @@ function getBaseFareValue(booking) {
 
 function formatCurrency(amount) {
   return `$${amount}`;
+}
+
+function updatePriceChangeAlert(booking, changedGroup, previousPrice, nextPrice) {
+  const message = buildPriceAlertMessage(booking, changedGroup, previousPrice, nextPrice);
+  setText("price-alert-message", message);
+}
+
+function buildPriceAlertMessage(booking, changedGroup, previousPrice, nextPrice) {
+  const totals = getPriceTotals(booking);
+  const labelMap = {
+    baggage: "baggage",
+    "seat-option": "seat upgrade",
+    insurance: "insurance",
+  };
+
+  if (totals.optionalExtrasTotal === 0) {
+    return "No optional extras selected.";
+  }
+
+  if (changedGroup && nextPrice > previousPrice) {
+    return `+ ${formatCurrency(nextPrice - previousPrice)} added for ${labelMap[changedGroup]}.`;
+  }
+
+  if (changedGroup && nextPrice < previousPrice) {
+    return `${labelMap[changedGroup][0].toUpperCase()}${labelMap[changedGroup].slice(1)} updated. Total adjusted from ${formatCurrency(totals.baseFare + previousPrice + (totals.optionalExtrasTotal - nextPrice))} to ${formatCurrency(totals.addonsPageTotal)}.`;
+  }
+
+  return `Optional add-ons changed your total from ${formatCurrency(totals.baseFare)} to ${formatCurrency(totals.addonsPageTotal)}.`;
+}
+
+function getPriceTotals(booking) {
+  const baseFare = getBaseFareValue(booking);
+  const baggagePrice = Number(booking.baggagePrice || 0);
+  const seatOptionPrice = Number(booking["seat-optionPrice"] || 0);
+  const insurancePrice = Number(booking.insurancePrice || 0);
+  const seatSelectionPrice = booking.seat ? 25 : 0;
+  const optionalExtrasTotal = baggagePrice + seatOptionPrice + insurancePrice;
+  const addonsTotal = baggagePrice + insurancePrice;
+  const taxes = 85;
+  const addonsPageTotal = baseFare + optionalExtrasTotal;
+  const paymentTotal = baseFare + seatOptionPrice + addonsTotal + taxes;
+
+  return {
+    baseFare,
+    baggagePrice,
+    seatOptionPrice,
+    insurancePrice,
+    seatSelectionPrice,
+    optionalExtrasTotal,
+    addonsTotal,
+    addonsPageTotal,
+    taxes,
+    paymentTotal,
+  };
 }
 
 function setCardText(card, selector, value) {

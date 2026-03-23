@@ -1100,9 +1100,16 @@ select.input option {
 }
 
 .innovation-alert {
+  padding: 14px 16px;
+  border-radius: 16px;
   border: 1px solid rgba(18, 146, 238, 0.22);
   background: var(--alert-blue-bg);
   color: var(--alert-blue-strong);
+}
+
+.innovation-alert .helper-text {
+  color: var(--alert-blue-strong);
+  opacity: 0.88;
 }
 
 .alert-pill {
@@ -1114,6 +1121,12 @@ select.input option {
   color: var(--alert-blue-strong);
   font-size: 12px;
   font-weight: 700;
+}
+
+.alert-message {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .legend-box.available {
