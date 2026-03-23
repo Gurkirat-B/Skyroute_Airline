@@ -29,6 +29,15 @@
   --white: var(--surface);
   --muted: var(--text-muted);
   --success-text: var(--success);
+  --text-inverse: #FFFFFF;
+  --nav-surface: var(--white);
+  --footer-surface: var(--primary-dark);
+  --panel-surface: var(--surface-alt);
+  --input-surface: var(--surface-alt);
+  --hero-start: var(--primary-dark);
+  --hero-end: var(--primary);
+  --hero-foreground: var(--text-inverse);
+  --hero-muted: var(--accent-soft);
   --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
   --radius-lg: 24px;
   --radius-md: 12px;
@@ -47,17 +56,38 @@ body {
 }
 
 body.dark-mode {
-  --bg: #0F172A;
-  --surface: #1E293B;
-  --surface-alt: #162235;
-  --text: #E2E8F0;
-  --text-muted: #CBD5E1;
-  --text-soft: #94A3B8;
+  --primary: #4F8CFF;
+  --primary-dark: #2563EB;
+  --accent: #38BDF8;
+  --bg: #0B1220;
+  --surface: #111827;
+  --surface-alt: #1F2937;
+  --text: #E5EEF8;
+  --text-muted: #A8B3C7;
+  --text-soft: #7F8CA3;
   --border: #334155;
   --border-strong: #475569;
+  --warning-bg: #3A2B12;
+  --danger-bg: #3A1D24;
+  --eco-green-bg: #10261D;
+  --eco-green-strong: #86D5AB;
+  --match-purple: #8B7CFF;
+  --match-purple-strong: #D7D0FF;
+  --match-purple-bg: #241C44;
+  --alert-blue-strong: #9FD4FF;
+  --alert-blue-bg: #102536;
   --white: var(--surface);
   --muted: var(--text-muted);
-  --shadow: 0 12px 28px rgba(2, 6, 23, 0.35);
+  --text-inverse: #F8FBFF;
+  --nav-surface: #0F172A;
+  --footer-surface: #0F172A;
+  --panel-surface: #1A2434;
+  --input-surface: #0F1B2D;
+  --hero-start: #0F172A;
+  --hero-end: #10284A;
+  --hero-foreground: #F8FBFF;
+  --hero-muted: #D7E7FB;
+  --shadow: 0 18px 34px rgba(2, 6, 23, 0.42);
 }
 
 a {
@@ -79,7 +109,7 @@ a {
 
 .navbar {
   height: 80px;
-  background: var(--white);
+  background: var(--nav-surface);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -129,7 +159,7 @@ a {
 }
 
 body.dark-mode .theme-toggle {
-  background: var(--surface);
+  background: var(--surface-alt);
 }
 
 .btn,
@@ -148,7 +178,7 @@ body.dark-mode .theme-toggle {
 
 .btn {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: var(--surface);
+  color: var(--text-inverse);
   border: none;
   box-shadow: 0 10px 22px rgba(20, 89, 199, 0.16);
 }
@@ -168,9 +198,9 @@ body.dark-mode .theme-toggle {
   margin-top: 40px;
   min-height: 280px;
   border-radius: 24px;
-  background: linear-gradient(105deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(105deg, var(--hero-start) 0%, var(--hero-end) 100%);
   padding: 48px 64px;
-  color: var(--surface);
+  color: var(--hero-foreground);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -189,7 +219,7 @@ body.dark-mode .theme-toggle {
   max-width: 720px;
   font-size: 18px;
   line-height: 1.7;
-  color: var(--accent-soft);
+  color: var(--hero-muted);
 }
 
 .card {
@@ -291,7 +321,7 @@ body.dark-mode .theme-toggle {
 .input {
   height: 56px;
   border: 1px solid var(--border-strong);
-  background: var(--surface-alt);
+  background: var(--input-surface);
   border-radius: 12px;
   padding: 0 16px;
   display: flex;
@@ -308,7 +338,7 @@ body.dark-mode .theme-toggle {
   justify-content: space-between;
   text-align: left;
   color: var(--text);
-  background: var(--surface-alt);
+  background: var(--input-surface);
 }
 
 .passenger-trigger.placeholder-select {
@@ -379,7 +409,7 @@ body.dark-mode .theme-toggle {
   height: 32px;
   border-radius: 999px;
   border: 1px solid var(--border-strong);
-  background: var(--surface-alt);
+  background: var(--input-surface);
   color: var(--primary);
   font-size: 20px;
   line-height: 1;
@@ -453,7 +483,7 @@ body.dark-mode .theme-toggle {
   margin-top: 48px;
   min-height: 64px;
   padding: 16px 0;
-  background: var(--primary-dark);
+  background: var(--footer-surface);
   display: flex;
   align-items: center;
 }
@@ -507,7 +537,7 @@ body.dark-mode .theme-toggle {
   padding: 18px 20px;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: var(--surface-alt);
+  background: var(--panel-surface);
 }
 
 .step {
@@ -531,7 +561,7 @@ body.dark-mode .theme-toggle {
 .step.completed .step-circle {
   background: var(--primary);
   border-color: var(--primary);
-  color: var(--surface);
+  color: var(--text-inverse);
 }
 
 .step.active .step-circle {
@@ -583,7 +613,7 @@ body.dark-mode .theme-toggle {
 }
 
 .summary-box {
-  background: var(--surface-alt);
+  background: var(--panel-surface);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 16px;
@@ -712,7 +742,7 @@ body.dark-mode .theme-toggle {
 
 .option-card.selected .tag {
   background: var(--primary);
-  color: var(--surface);
+  color: var(--text-inverse);
 }
 
 .flight-card {
@@ -857,7 +887,7 @@ body.dark-mode .theme-toggle {
   padding: 6px 10px;
   border-radius: 999px;
   background: var(--match-purple);
-  color: var(--surface);
+  color: var(--text-inverse);
   font-size: 12px;
   font-weight: 700;
 }
@@ -917,7 +947,7 @@ body.dark-mode .theme-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px 32px;
-  background: var(--surface-alt);
+  background: var(--panel-surface);
   border-radius: 14px;
   padding: 24px;
 }
@@ -954,7 +984,7 @@ body.dark-mode .theme-toggle {
 }
 
 .faq-item {
-  background: var(--surface-alt);
+  background: var(--panel-surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
@@ -976,7 +1006,7 @@ body.dark-mode .theme-toggle {
   height: 48px;
   border-radius: 12px;
   border: 1px solid var(--border-strong);
-  background: var(--surface-alt);
+  background: var(--input-surface);
   padding: 0 16px;
   display: flex;
   align-items: center;
@@ -1028,7 +1058,7 @@ body.dark-mode .theme-toggle {
   background: var(--text-soft);
   border-color: var(--text-soft);
   cursor: not-allowed;
-  color: var(--surface);
+  color: var(--text-inverse);
 }
 
 .legend {
@@ -1056,7 +1086,7 @@ body.dark-mode .theme-toggle {
   padding: 16px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: var(--surface-alt);
+  background: var(--panel-surface);
 }
 
 .selected-seat-box p {
@@ -1140,6 +1170,85 @@ select.input option {
   color: var(--primary);
   font-size: 14px;
   line-height: 1.5;
+}
+
+body.dark-mode .logo {
+  color: #8EC1FF;
+}
+
+body.dark-mode .tab.inactive {
+  background: #182233;
+  color: var(--text-muted);
+}
+
+body.dark-mode .tab.active {
+  background: rgba(79, 140, 255, 0.16);
+  color: #DCEAFF;
+}
+
+body.dark-mode .step.completed .step-circle {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .step.active .step-circle {
+  background: rgba(79, 140, 255, 0.14);
+  box-shadow: 0 0 0 4px rgba(79, 140, 255, 0.18);
+}
+
+body.dark-mode .option-card.selectable:hover,
+body.dark-mode .flight-card.selectable:hover {
+  border-color: rgba(79, 140, 255, 0.42);
+  box-shadow: 0 16px 28px rgba(4, 10, 24, 0.38);
+}
+
+body.dark-mode .option-card.selected,
+body.dark-mode .flight-card.selected {
+  background: #10233C;
+  border-color: rgba(79, 140, 255, 0.52);
+  box-shadow: 0 16px 30px rgba(4, 10, 24, 0.42);
+}
+
+body.dark-mode .tag {
+  background: #243041;
+  color: var(--text-muted);
+}
+
+body.dark-mode .flight-insight {
+  background: linear-gradient(180deg, rgba(139, 124, 255, 0.14) 0%, var(--surface) 100%);
+  border-color: rgba(139, 124, 255, 0.24);
+}
+
+body.dark-mode .eco-highlight {
+  background: rgba(139, 124, 255, 0.18);
+  color: var(--match-purple-strong);
+}
+
+body.dark-mode .sort-btn {
+  background: var(--surface);
+  border-color: rgba(139, 124, 255, 0.26);
+  color: var(--match-purple-strong);
+}
+
+body.dark-mode .sort-btn.active {
+  background: rgba(139, 124, 255, 0.16);
+  border-color: rgba(139, 124, 255, 0.4);
+}
+
+body.dark-mode .innovation-alert {
+  border-color: rgba(56, 189, 248, 0.26);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .flow-note {
+  background: #10233C;
+  border-color: rgba(56, 189, 248, 0.22);
+  color: #DCEAFF;
+}
+
+body.dark-mode .summary-total strong,
+body.dark-mode .price,
+body.dark-mode .flight-price .amount {
+  color: #8EC1FF;
 }
 
 .readonly-value {
