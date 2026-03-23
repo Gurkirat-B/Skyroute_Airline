@@ -1271,3 +1271,34 @@ select.input option {
   font-size: 14px;
   color: var(--text);
 }
+
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--match-purple-strong);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.info-link:hover {
+  color: var(--match-purple);
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-list-item {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-alt);
+}
+
+.info-list-item p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
