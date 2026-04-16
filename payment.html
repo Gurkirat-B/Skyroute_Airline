@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Review and Complete Payment</h1>
-      <p>Review your booking total, then confirm this simulated booking to continue to the confirmation page.</p>
+      <p>Review your selected fare, optional extras, and final total before confirming this simulated booking.</p>
 
       <div class="progress-caption">Step 5 of 6: Payment</div>
       <div class="progress">
@@ -46,7 +46,7 @@
         <form id="payment-form" class="card">
           <h2>Payment Details</h2>
           <p class="subtitle">Enter payment details to complete this simulated checkout.</p>
-          <div class="helper-text helper-top">Final total shown before payment. Taxes, fees, and selected optional add-ons are included.</div>
+          <div class="helper-text helper-top">This is a final review of the fare and optional extras already selected. Taxes and fees are included.</div>
 
           <div class="form-grid spaced-top-md">
             <div class="field full">
@@ -88,7 +88,7 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Final booking review before confirmation.</p>
+          <p class="subtitle">Selected fare and optional refinements before confirmation.</p>
           <div class="summary-box summary-details">
             <h4 id="payment-summary-route">Toronto (YYZ) → London (LHR)</h4>
             <p id="payment-summary-dates">25 Mar 2026 - 02 Apr 2026</p>
@@ -96,13 +96,13 @@
           <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
-            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="payment-base-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Selected Fare</div><div><strong id="payment-base-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Seat Upgrade</div><div id="payment-seat-price">$25</div></div>
             <div class="summary-row"><div class="label">Other Add-ons</div><div id="payment-addons-price">$0</div></div>
             <div class="summary-row"><div class="label">Taxes & Fees</div><div>$85</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="payment-total">$289</strong></div>
-          <div class="note summary-note">Final total shown before payment. No real charge is processed in this prototype.</div>
+          <div class="note summary-note">Final total from your selected fare and optional extras. No real charge is processed in this prototype.</div>
         </div>
       </div>
     </div>

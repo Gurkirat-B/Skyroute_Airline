@@ -23,7 +23,7 @@
 
     <div class="container page-header">
       <h1>Choose Optional Add-ons</h1>
-      <p>Review optional services for this trip, then continue to payment when you are ready.</p>
+      <p>Your flight fare is already selected. Add only the optional extras you want for this trip.</p>
 
       <div class="progress-caption">Step 4 of 6: Add-ons</div>
       <div class="progress">
@@ -45,7 +45,7 @@
       <div class="main-left">
         <div class="card">
           <h2>Optional Baggage</h2>
-          <p class="subtitle">Choose one baggage option for this trip.</p>
+          <p class="subtitle">Optional baggage can be added to the selected fare.</p>
           <div class="option-row spaced-top-md">
             <div class="option-card selectable selected" data-addon-group="baggage" data-addon-name="No Extra Baggage" data-addon-price="0"><div><h3>No Extra Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
             <div class="option-card selectable" data-addon-group="baggage" data-addon-name="1 Extra Bag" data-addon-price="60"><div><h3>1 Extra Bag</h3><p>Add one checked bag up to 23kg.</p></div><div class="option-bottom"><div class="price">$60</div><div class="tag">Select</div></div></div>
@@ -54,8 +54,8 @@
         </div>
 
         <div class="card">
-          <h2>Seat Upgrade</h2>
-          <p class="subtitle">Choose one seating option for this flight.</p>
+          <h2>Optional Seat Upgrade</h2>
+          <p class="subtitle">Keep the included seat option or add a seating upgrade.</p>
           <div class="option-row spaced-top-md">
             <div class="option-card selectable selected" data-addon-group="seat-option" data-addon-name="Standard Seat" data-addon-price="0"><div><h3>Standard Seat</h3><p>Keep a standard seat assignment with no extra charge.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
             <div class="option-card selectable" data-addon-group="seat-option" data-addon-name="Window / Aisle" data-addon-price="25"><div><h3>Window / Aisle</h3><p>Choose a preferred standard seat location.</p></div><div class="option-bottom"><div class="price">$25</div><div class="tag">Select</div></div></div>
@@ -65,7 +65,7 @@
 
         <div class="card">
           <h2>Travel Insurance</h2>
-          <p class="subtitle">Choose one protection option for this booking.</p>
+          <p class="subtitle">Optional protection can be added before payment.</p>
           <div class="option-row spaced-top-md">
             <div class="option-card selectable selected" data-addon-group="insurance" data-addon-name="No Insurance" data-addon-price="0"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
             <div class="option-card selectable" data-addon-group="insurance" data-addon-name="Basic Coverage" data-addon-price="18"><div><h3>Basic Coverage</h3><p>Includes trip delay and baggage support.</p></div><div class="option-bottom"><div class="price">$18</div><div class="tag">Select</div></div></div>
@@ -77,7 +77,7 @@
       <div class="sidebar">
         <div class="card">
           <h2>Trip Summary</h2>
-          <p class="subtitle">Review your booking details before payment.</p>
+          <p class="subtitle">Selected fare plus any optional extras chosen here.</p>
           <div class="innovation-alert summary-details" id="price-change-alert">
             <div class="alert-pill">Price Change Alert</div>
             <div class="alert-message helper-top" id="price-alert-message">No optional extras selected.</div>
@@ -90,13 +90,13 @@
           <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
-            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="addons-base-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Selected Fare</div><div><strong id="addons-base-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Baggage</div><div id="addons-baggage-price">$0</div></div>
             <div class="summary-row"><div class="label">Seat Upgrade</div><div id="addons-seat-option-price">$0</div></div>
             <div class="summary-row"><div class="label">Insurance</div><div id="addons-insurance-price">$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="addons-total">$179</strong></div>
-          <div class="note summary-note" id="addons-selection-note">Optional add-ons update the total instantly before payment.</div>
+          <div class="note summary-note" id="addons-selection-note">Optional add-ons refine the selected fare and update the total instantly before payment.</div>
         </div>
 
         <div class="sidebar-actions">
