@@ -769,8 +769,8 @@ body.dark-mode .theme-toggle {
 
 .flight-card {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  gap: 24px;
+  align-items: flex-start;
   justify-content: space-between;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
@@ -819,27 +819,34 @@ body.dark-mode .theme-toggle {
 }
 
 .flight-meta {
-  width: 220px;
+  width: 170px;
+  padding-top: 4px;
 }
 
 .flight-meta h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
-  color: var(--primary);
+  margin: 0 0 7px;
+  font-size: 16px;
+  color: var(--text);
 }
 
 .flight-meta p {
+  display: inline-flex;
   margin: 0;
-  color: var(--muted);
-  font-size: 14px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .flight-times {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 160px 1fr;
-  gap: 12px;
+  grid-template-columns: minmax(90px, 1fr) 140px minmax(90px, 1fr);
+  gap: 16px;
   align-items: center;
+  padding-top: 2px;
 }
 
 .center {
@@ -847,52 +854,58 @@ body.dark-mode .theme-toggle {
 }
 
 .time {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .city {
-  margin-top: 8px;
-  font-size: 14px;
-  color: var(--muted);
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .flight-mid {
   text-align: center;
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-soft);
 }
 
 .flight-line {
-  width: 110px;
+  width: 88px;
   height: 2px;
-  margin: 8px auto;
+  margin: 7px auto 5px;
   background: linear-gradient(to right, var(--accent), var(--primary));
   border-radius: 999px;
+  opacity: 0.78;
 }
 
 .flight-price {
-  width: 150px;
+  width: 170px;
   text-align: right;
+  padding-top: 2px;
 }
 
 .flight-insight {
-  width: 220px;
-  padding: 14px 16px;
+  width: 200px;
+  padding: 12px 14px;
   border-radius: 16px;
-  background: linear-gradient(180deg, var(--match-purple-bg) 0%, var(--surface) 100%);
-  border: 1px solid rgba(112, 87, 255, 0.14);
+  background: var(--surface-alt);
+  border: 1px solid rgba(112, 87, 255, 0.12);
 }
 
 .eco-highlight {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 6px 10px;
+  margin-bottom: 8px;
+  padding: 5px 8px;
   border-radius: 999px;
   background: var(--match-purple-bg);
   color: var(--match-purple-strong);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -906,20 +919,20 @@ body.dark-mode .theme-toggle {
 .score-pill {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 999px;
   background: var(--match-purple);
   color: var(--text-inverse);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .eco-badge {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -939,24 +952,25 @@ body.dark-mode .theme-toggle {
 }
 
 .eco-copy {
-  margin-top: 8px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.45;
 }
 
 .eco-reason {
-  margin-top: 10px;
-  font-size: 13px;
+  margin-top: 8px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--match-purple-strong);
 }
 
 .flight-price .amount {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   color: var(--primary);
-  margin-bottom: 14px;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
 }
 
 .split-2 {
@@ -1277,9 +1291,14 @@ body.dark-mode .tag {
   color: var(--text-muted);
 }
 
+body.dark-mode .flight-meta p {
+  background: var(--panel-surface);
+  color: #A8CCFF;
+}
+
 body.dark-mode .flight-insight {
   background: var(--panel-surface);
-  border-color: rgba(155, 140, 255, 0.34);
+  border-color: rgba(155, 140, 255, 0.28);
 }
 
 body.dark-mode .eco-highlight {
@@ -1324,6 +1343,8 @@ body.dark-mode .section p.subtitle,
 body.dark-mode .card p.subtitle,
 body.dark-mode .city,
 body.dark-mode .flight-mid,
+body.dark-mode .eco-copy,
+body.dark-mode .flight-price .helper-text,
 body.dark-mode .summary-box p,
 body.dark-mode .row-number,
 body.dark-mode .muted {
@@ -1504,7 +1525,10 @@ body.dark-mode .search-help {
 
 .flight-price .helper-text {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-soft);
 }
 
 .legend-box.available {
