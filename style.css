@@ -1313,6 +1313,28 @@ body.dark-mode .search-help {
   border-bottom: 2px solid var(--primary);
 }
 
+.nav-link.nav-disabled {
+  color: var(--text-soft);
+  opacity: 0.72;
+  cursor: default;
+  border-bottom-color: transparent;
+}
+
+.nav-link.nav-disabled:hover {
+  color: var(--text-soft);
+  cursor: default;
+}
+
+.btn.nav-disabled-action {
+  opacity: 0.72;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn.nav-disabled-action:hover {
+  transform: none;
+}
+
 .filter-group {
   display: flex;
   flex-direction: column;
