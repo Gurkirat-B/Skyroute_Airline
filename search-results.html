@@ -214,49 +214,49 @@
 
       <div class="sidebar">
         <div class="card">
-          <h2>Filters</h2>
-          <p class="subtitle">Refine results by schedule, fare features, and EcoMatch priorities.</p>
-          <div class="helper-text helper-top">EcoMatch helps compare flights using overall fit and CO2 impact.</div>
-          <div class="stack-md spaced-top-md">
-            <div class="filter-group">
-              <div class="filter-title">Stops</div>
-              <div class="filter-helper">Choose the connection types you want to see.</div>
+          <h2>Filter Results</h2>
+          <p class="subtitle">Choose preferences by category to compare the flights that fit your trip.</p>
+          <div class="helper-text helper-top">EcoMatch sorting is controlled above the flight list.</div>
+          <div class="filter-panel spaced-top-md" role="form" aria-label="Flight result filters">
+            <fieldset class="filter-group">
+              <legend class="filter-title">Stops</legend>
+              <div class="filter-helper" id="filter-stops-help">Connection options</div>
               <div class="filter-options">
-                <label class="filter-check"><input type="checkbox" checked /> Nonstop</label>
-                <label class="filter-check"><input type="checkbox" /> 1 Stop</label>
-                <label class="filter-check"><input type="checkbox" /> 2+ Stops</label>
+                <label class="filter-check" for="filter-nonstop"><input id="filter-nonstop" name="stops" type="checkbox" checked aria-describedby="filter-stops-help" /> <span>Nonstop</span></label>
+                <label class="filter-check" for="filter-one-stop"><input id="filter-one-stop" name="stops" type="checkbox" aria-describedby="filter-stops-help" /> <span>1 stop</span></label>
+                <label class="filter-check" for="filter-two-stops"><input id="filter-two-stops" name="stops" type="checkbox" aria-describedby="filter-stops-help" /> <span>2+ stops</span></label>
               </div>
-            </div>
+            </fieldset>
 
-            <div class="filter-group">
-              <div class="filter-title">Departure Time</div>
-              <div class="filter-helper">Compare flights by the time you prefer to leave.</div>
+            <fieldset class="filter-group">
+              <legend class="filter-title">Departure Time</legend>
+              <div class="filter-helper" id="filter-time-help">Preferred time to leave</div>
               <div class="filter-options">
-                <label class="filter-check"><input type="checkbox" checked /> Morning (6 AM - 12 PM)</label>
-                <label class="filter-check"><input type="checkbox" checked /> Afternoon (12 PM - 6 PM)</label>
-                <label class="filter-check"><input type="checkbox" /> Evening (6 PM - 11 PM)</label>
+                <label class="filter-check" for="filter-morning"><input id="filter-morning" name="departure-time" type="checkbox" checked aria-describedby="filter-time-help" /> <span>Morning, 6 AM - 12 PM</span></label>
+                <label class="filter-check" for="filter-afternoon"><input id="filter-afternoon" name="departure-time" type="checkbox" checked aria-describedby="filter-time-help" /> <span>Afternoon, 12 PM - 6 PM</span></label>
+                <label class="filter-check" for="filter-evening"><input id="filter-evening" name="departure-time" type="checkbox" aria-describedby="filter-time-help" /> <span>Evening, 6 PM - 11 PM</span></label>
               </div>
-            </div>
+            </fieldset>
 
-            <div class="filter-group">
-              <div class="filter-title">Fare Features</div>
-              <div class="filter-helper">Surface fares with the benefits that matter for this trip.</div>
+            <fieldset class="filter-group">
+              <legend class="filter-title">Fare Features</legend>
+              <div class="filter-helper" id="filter-features-help">Benefits to compare</div>
               <div class="filter-options">
-                <label class="filter-check"><input type="checkbox" /> Seat selection included</label>
-                <label class="filter-check"><input type="checkbox" /> Checked bag included</label>
-                <label class="filter-check"><input type="checkbox" /> Flexible changes</label>
+                <label class="filter-check" for="filter-seat-included"><input id="filter-seat-included" name="fare-features" type="checkbox" aria-describedby="filter-features-help" /> <span>Seat selection included</span></label>
+                <label class="filter-check" for="filter-bag-included"><input id="filter-bag-included" name="fare-features" type="checkbox" aria-describedby="filter-features-help" /> <span>Checked bag included</span></label>
+                <label class="filter-check" for="filter-flexible"><input id="filter-flexible" name="fare-features" type="checkbox" aria-describedby="filter-features-help" /> <span>Flexible changes</span></label>
               </div>
-            </div>
+            </fieldset>
 
-            <div class="filter-group">
-              <div class="filter-title">Price</div>
-              <div class="filter-helper">Keep results within the price range you are comparing.</div>
+            <fieldset class="filter-group">
+              <legend class="filter-title">Price</legend>
+              <div class="filter-helper" id="filter-price-help">Base fare range</div>
               <div class="filter-options">
-                <label class="filter-check"><input type="checkbox" checked /> Under $180</label>
-                <label class="filter-check"><input type="checkbox" checked /> $180 - $220</label>
-                <label class="filter-check"><input type="checkbox" /> Over $220</label>
+                <label class="filter-check" for="filter-under-180"><input id="filter-under-180" name="price" type="checkbox" checked aria-describedby="filter-price-help" /> <span>Under $180</span></label>
+                <label class="filter-check" for="filter-180-220"><input id="filter-180-220" name="price" type="checkbox" checked aria-describedby="filter-price-help" /> <span>$180 - $220</span></label>
+                <label class="filter-check" for="filter-over-220"><input id="filter-over-220" name="price" type="checkbox" aria-describedby="filter-price-help" /> <span>$220+</span></label>
               </div>
-            </div>
+            </fieldset>
           </div>
         </div>
       </div>

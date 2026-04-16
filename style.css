@@ -1341,6 +1341,22 @@ body.dark-mode .sort-btn.active {
   border-color: rgba(155, 140, 255, 0.5);
 }
 
+body.dark-mode .filter-check {
+  background: var(--surface-alt);
+  border-color: var(--border);
+}
+
+body.dark-mode .filter-check:hover {
+  background: var(--panel-surface);
+  border-color: var(--border-strong);
+}
+
+body.dark-mode .filter-check:has(input:checked) {
+  background: rgba(79, 140, 255, 0.14);
+  border-color: rgba(96, 165, 250, 0.36);
+  color: var(--text);
+}
+
 body.dark-mode .innovation-alert {
   border-color: rgba(125, 211, 252, 0.34);
   box-shadow: none;
@@ -1430,12 +1446,23 @@ body.dark-mode .search-help {
   transform: none;
 }
 
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 16px;
+  gap: 12px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 18px 0 0;
   border-top: 1px solid var(--border);
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
 }
 
 .filter-group:first-of-type {
@@ -1444,34 +1471,60 @@ body.dark-mode .search-help {
 }
 
 .filter-title {
-  font-size: 14px;
-  font-weight: 600;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 800;
   color: var(--text);
 }
 
 .filter-options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.checkbox-row,
 .filter-check {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 40px;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
   font-size: 14px;
   color: var(--text);
+  line-height: 1.35;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.checkbox-row {
-  color: var(--muted);
+.filter-check:hover {
+  border-color: var(--border-strong);
+  background: var(--panel-surface);
+}
+
+.filter-check:has(input:checked) {
+  border-color: rgba(20, 89, 199, 0.28);
+  background: var(--accent-soft);
+  color: var(--primary-dark);
+}
+
+.filter-check:has(input:focus-visible) {
+  outline: 3px solid rgba(34, 184, 240, 0.28);
+  outline-offset: 2px;
 }
 
 .filter-check input {
   width: 16px;
   height: 16px;
+  flex: 0 0 auto;
+  margin: 0;
   accent-color: var(--primary);
+}
+
+.filter-check span {
+  flex: 1;
 }
 
 .helper-text {
