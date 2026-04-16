@@ -25,6 +25,7 @@
       <h1>Select Your Seat</h1>
       <p>Choose a seat for this trip, then continue to optional add-ons.</p>
 
+      <div class="progress-caption">Step 3 of 6: Seats</div>
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
         <div class="step-line"></div>
@@ -35,6 +36,8 @@
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
         <div class="step-line"></div>
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Payment</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Confirmation</div></div>
       </div>
     </div>
 
@@ -68,7 +71,7 @@
         </div>
 
         <div class="button-row">
-          <a class="btn-secondary" href="passenger-info.html">Back to Passengers</a>
+          <a class="btn-secondary" href="passenger-info.html">← Back to Passenger Details</a>
           <a class="btn" href="Add-ons.html">Continue to Add-ons</a>
         </div>
       </div>
@@ -84,12 +87,12 @@
           <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
-            <div class="summary-row"><div class="label">Flight Fare</div><div><strong id="seat-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="seat-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Seat Selection</div><div id="seat-selection-price">$25</div></div>
             <div class="summary-row"><div class="label">Optional Add-ons</div><div>$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="seat-total">$204</strong></div>
-          <div class="note summary-note">Preferred seat selection is optional and may be changed later, depending on your fare.</div>
+          <div class="note summary-note">Current total includes the selected seat estimate. Optional add-ons, taxes, and fees are reviewed before payment.</div>
         </div>
       </div>
     </div>

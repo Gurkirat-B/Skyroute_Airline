@@ -473,6 +473,9 @@ function populatePriceSummaries() {
   setText("payment-seat-price", formatCurrency(totals.seatOptionPrice));
   setText("payment-addons-price", formatCurrency(totals.addonsTotal));
   setText("payment-total", formatCurrency(totals.paymentTotal));
+  setText("confirm-base-fare", formatCurrency(totals.baseFare));
+  setText("confirm-seat-upgrade", formatCurrency(totals.seatOptionPrice));
+  setText("confirm-addons-price", formatCurrency(totals.addonsTotal));
   setText("confirm-total-paid", formatCurrency(totals.paymentTotal));
   setText("confirm-total-side", formatCurrency(totals.paymentTotal));
   updatePriceChangeAlert(booking);

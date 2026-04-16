@@ -25,6 +25,7 @@
       <h1>Enter Passenger Details</h1>
       <p>Enter traveler and contact details, then continue to seat selection.</p>
 
+      <div class="progress-caption">Step 2 of 6: Passengers</div>
       <div class="progress">
         <div class="step completed"><div class="step-circle">✓</div><div class="step-label">Flights</div></div>
         <div class="step-line"></div>
@@ -35,6 +36,8 @@
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Add-ons</div></div>
         <div class="step-line"></div>
         <div class="step pending"><div class="step-circle"></div><div class="step-label">Payment</div></div>
+        <div class="step-line"></div>
+        <div class="step pending"><div class="step-circle"></div><div class="step-label">Confirmation</div></div>
       </div>
     </div>
 
@@ -98,7 +101,7 @@
           </div>
 
           <div class="button-row spaced-top-lg">
-            <a class="btn-secondary" href="flight-details.html">Back to Flight Details</a>
+            <a class="btn-secondary" href="flight-details.html">← Back to Flight Details</a>
             <button class="btn" type="submit">Continue to Seats</button>
           </div>
         </form>
@@ -115,12 +118,12 @@
           <div class="summary-details">
             <div class="summary-row"><div class="label">Passengers</div><div data-booking-passengers>1 Passenger</div></div>
             <div class="summary-row"><div class="label">Cabin Class</div><div data-booking-class>Economy</div></div>
-            <div class="summary-row"><div class="label">Flight Fare</div><div><strong id="passenger-fare">$179</strong></div></div>
+            <div class="summary-row"><div class="label">Base Fare</div><div><strong id="passenger-fare">$179</strong></div></div>
             <div class="summary-row"><div class="label">Seat Selection</div><div>$0</div></div>
             <div class="summary-row"><div class="label">Optional Add-ons</div><div>$0</div></div>
           </div>
           <div class="summary-total"><div>Total</div><strong id="passenger-total">$179</strong></div>
-          <div class="note summary-note">Please review traveler details carefully before continuing to seat selection.</div>
+          <div class="note summary-note">Current total shown before seat selection, optional add-ons, taxes, and fees.</div>
         </div>
       </div>
     </div>

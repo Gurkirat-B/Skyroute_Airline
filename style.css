@@ -545,6 +545,19 @@ body.dark-mode .theme-toggle {
   background: var(--panel-surface);
 }
 
+.progress-caption {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .step {
   display: flex;
   align-items: center;
