@@ -818,6 +818,18 @@ body.dark-mode .theme-toggle {
   border-color: rgba(112, 87, 255, 0.32);
 }
 
+.ecomatch-hint {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--match-purple-bg);
+  color: var(--match-purple-strong);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .flight-meta {
   width: 170px;
   padding-top: 4px;
@@ -956,6 +968,13 @@ body.dark-mode .theme-toggle {
   font-size: 12px;
   color: var(--text-soft);
   line-height: 1.45;
+}
+
+.eco-score-note {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-soft);
 }
 
 .eco-reason {
@@ -1306,6 +1325,11 @@ body.dark-mode .eco-highlight {
   color: var(--match-purple-strong);
 }
 
+body.dark-mode .ecomatch-hint {
+  background: rgba(155, 140, 255, 0.18);
+  color: var(--match-purple-strong);
+}
+
 body.dark-mode .sort-btn {
   background: var(--surface-alt);
   border-color: rgba(155, 140, 255, 0.32);
@@ -1344,6 +1368,7 @@ body.dark-mode .card p.subtitle,
 body.dark-mode .city,
 body.dark-mode .flight-mid,
 body.dark-mode .eco-copy,
+body.dark-mode .eco-score-note,
 body.dark-mode .flight-price .helper-text,
 body.dark-mode .summary-box p,
 body.dark-mode .row-number,
