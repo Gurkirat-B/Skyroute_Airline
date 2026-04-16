@@ -145,15 +145,7 @@ function setupSearchResults() {
   cards.forEach((card) => populateEcoMatchCard(card));
 
   if (booking.selectedFlightNumber) {
-    cards.forEach((card) => {
-      const flightNumber = card.querySelector(".flight-meta p")?.textContent.trim();
-      const action = card.querySelector(".select-flight");
-
-      if (flightNumber === booking.selectedFlightNumber) {
-        card.classList.add("selected");
-        if (action) action.textContent = "Selected Flight";
-      }
-    });
+    markSelectedFlight(cards, booking.selectedFlightNumber);
   }
 
   if (list && sortMatchButton && sortEcoButton) {
@@ -180,14 +172,32 @@ function setupSearchResults() {
   if (!buttons.length) return;
 
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       booking.selectedFlightNumber = button.dataset.flightNumber;
       booking.selectedDepartureTime = button.dataset.departureTime;
       booking.selectedArrivalTime = button.dataset.arrivalTime;
       booking.selectedDuration = button.dataset.duration;
       booking.selectedPrice = button.dataset.price;
       saveBookingData(booking);
+      markSelectedFlight(cards, booking.selectedFlightNumber);
+      window.setTimeout(() => {
+        window.location.href = button.href;
+      }, 220);
     });
+  });
+}
+
+function markSelectedFlight(cards, selectedFlightNumber) {
+  cards.forEach((card) => {
+    const flightNumber = card.querySelector(".flight-meta p")?.textContent.trim();
+    const action = card.querySelector(".select-flight");
+    const status = card.querySelector("[data-flight-status]");
+    const isSelected = flightNumber === selectedFlightNumber;
+
+    card.classList.toggle("selected", isSelected);
+    if (action) action.textContent = isSelected ? "Selected Flight" : "Select Flight";
+    if (status) status.hidden = !isSelected;
   });
 }
 
@@ -308,6 +318,8 @@ function setupSeatSelection() {
         seats.forEach((s) => s.classList.remove("selected"));
         selectedSeat.classList.add("selected");
         output.textContent = `${booking.seat} — Standard Seat`;
+        setText("seat-feedback", "Seat selected");
+        setText("seat-flow-note", "Seat selected. Continue to Add-ons when you are ready.");
       }
     }
 
@@ -318,6 +330,8 @@ function setupSeatSelection() {
         seats.forEach((s) => s.classList.remove("selected"));
         seat.classList.add("selected");
         output.textContent = `${seat.dataset.seat} — Standard Seat`;
+        setText("seat-feedback", "Seat selected");
+        setText("seat-flow-note", "Seat selected. Continue to Add-ons when you are ready.");
 
         const booking = getBookingData();
         booking.seat = seat.dataset.seat;
@@ -647,7 +661,9 @@ function applyAddonSelection(card, persist) {
   const insurance = latestBooking.insuranceName || "No Insurance";
   setText(
     "addons-selection-note",
-    `Selected options: ${baggage}, ${seatOption}, and ${insurance}.`
+    persist
+      ? `${card.dataset.addonName} selected. Current options: ${baggage}, ${seatOption}, and ${insurance}.`
+      : `Current options: ${baggage}, ${seatOption}, and ${insurance}.`
   );
   updatePriceChangeAlert(latestBooking, group, previousPrice, nextPrice);
   populatePriceSummaries();
