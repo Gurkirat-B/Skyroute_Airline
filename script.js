@@ -644,12 +644,12 @@ function applyAddonSelection(card, persist) {
   groupCards.forEach((groupCard) => {
     groupCard.classList.remove("selected");
     const tag = groupCard.querySelector(".tag");
-    if (tag) tag.textContent = "Select";
+    if (tag) tag.textContent = groupCard.dataset.defaultLabel || "Select";
   });
 
   card.classList.add("selected");
   const activeTag = card.querySelector(".tag");
-  if (activeTag) activeTag.textContent = "Selected";
+  if (activeTag) activeTag.textContent = card.dataset.selectedLabel || "Selected";
 
   const booking = getBookingData();
   const previousPrice = Number(booking[getAddonPriceKey(group)] || 0);
@@ -662,10 +662,14 @@ function applyAddonSelection(card, persist) {
   const baggage = latestBooking.baggageName || "No Extra Baggage";
   const seatOption = latestBooking["seat-optionName"] || "Standard Seat";
   const insurance = latestBooking.insuranceName || "No Insurance";
+  const selectionMessage =
+    nextPrice > 0
+      ? `${card.dataset.addonName} chosen. You can keep it or return to a $0 option before payment.`
+      : `${card.dataset.addonName} chosen. No extra charge was added.`;
   setText(
     "addons-selection-note",
     persist
-      ? `${card.dataset.addonName} selected. Current options: ${baggage}, ${seatOption}, and ${insurance}.`
+      ? selectionMessage
       : `Current options: ${baggage}, ${seatOption}, and ${insurance}.`
   );
   updatePriceChangeAlert(latestBooking, group, previousPrice, nextPrice);
@@ -695,7 +699,7 @@ function buildPriceAlertMessage(booking, changedGroup, previousPrice, nextPrice)
   };
 
   if (totals.optionalExtrasTotal === 0) {
-    return "No optional extras selected.";
+    return "No optional extras selected. Your included choices remain selected.";
   }
 
   if (changedGroup && nextPrice > previousPrice) {

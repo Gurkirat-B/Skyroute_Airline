@@ -22,8 +22,8 @@
     </div>
 
     <div class="container page-header">
-      <h1>Choose Optional Add-ons</h1>
-      <p>Your flight fare is already selected. Add only the optional extras you want for this trip.</p>
+      <h1>Optional Add-ons</h1>
+      <p>Your flight fare is already selected. You can skip this step or add only the extras you want.</p>
 
       <div class="progress-caption">Step 4 of 6: Add-ons</div>
       <div class="progress">
@@ -45,9 +45,9 @@
       <div class="main-left">
         <div class="card">
           <h2>Optional Baggage</h2>
-          <p class="subtitle">Optional baggage can be added to the selected fare.</p>
+          <p class="subtitle">Keep the included baggage option or add checked bags for this trip.</p>
           <div class="option-row spaced-top-md">
-            <div class="option-card selectable selected" data-addon-group="baggage" data-addon-name="No Extra Baggage" data-addon-price="0"><div><h3>No Extra Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="baggage" data-addon-name="No Extra Baggage" data-addon-price="0" data-selected-label="Included" data-default-label="No Extra"><div><h3>Included Baggage</h3><p>Travel with standard included baggage only.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Included</div></div></div>
             <div class="option-card selectable" data-addon-group="baggage" data-addon-name="1 Extra Bag" data-addon-price="60"><div><h3>1 Extra Bag</h3><p>Add one checked bag up to 23kg.</p></div><div class="option-bottom"><div class="price">$60</div><div class="tag">Select</div></div></div>
             <div class="option-card selectable" data-addon-group="baggage" data-addon-name="2 Extra Bags" data-addon-price="120"><div><h3>2 Extra Bags</h3><p>Add two checked bags for longer trips.</p></div><div class="option-bottom"><div class="price">$120</div><div class="tag">Select</div></div></div>
           </div>
@@ -57,7 +57,7 @@
           <h2>Optional Seat Upgrade</h2>
           <p class="subtitle">Keep the included seat option or add a seating upgrade.</p>
           <div class="option-row spaced-top-md">
-            <div class="option-card selectable selected" data-addon-group="seat-option" data-addon-name="Standard Seat" data-addon-price="0"><div><h3>Standard Seat</h3><p>Keep a standard seat assignment with no extra charge.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="seat-option" data-addon-name="Standard Seat" data-addon-price="0" data-selected-label="Included" data-default-label="Included"><div><h3>Included Standard Seat</h3><p>Keep a standard seat assignment with no extra charge.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Included</div></div></div>
             <div class="option-card selectable" data-addon-group="seat-option" data-addon-name="Window / Aisle" data-addon-price="25"><div><h3>Window / Aisle</h3><p>Choose a preferred standard seat location.</p></div><div class="option-bottom"><div class="price">$25</div><div class="tag">Select</div></div></div>
             <div class="option-card selectable" data-addon-group="seat-option" data-addon-name="Extra Legroom" data-addon-price="55"><div><h3>Extra Legroom</h3><p>Add more space for a more comfortable journey.</p></div><div class="option-bottom"><div class="price">$55</div><div class="tag">Select</div></div></div>
           </div>
@@ -65,9 +65,9 @@
 
         <div class="card">
           <h2>Travel Insurance</h2>
-          <p class="subtitle">Optional protection can be added before payment.</p>
+          <p class="subtitle">Insurance is optional. Continue without it or choose a protection option.</p>
           <div class="option-row spaced-top-md">
-            <div class="option-card selectable selected" data-addon-group="insurance" data-addon-name="No Insurance" data-addon-price="0"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">Selected</div></div></div>
+            <div class="option-card selectable selected" data-addon-group="insurance" data-addon-name="No Insurance" data-addon-price="0" data-selected-label="No Extra" data-default-label="No Extra"><div><h3>No Insurance</h3><p>Continue without additional protection.</p></div><div class="option-bottom"><div class="price">$0</div><div class="tag">No Extra</div></div></div>
             <div class="option-card selectable" data-addon-group="insurance" data-addon-name="Basic Coverage" data-addon-price="18"><div><h3>Basic Coverage</h3><p>Includes trip delay and baggage support.</p></div><div class="option-bottom"><div class="price">$18</div><div class="tag">Select</div></div></div>
             <div class="option-card selectable" data-addon-group="insurance" data-addon-name="Premium Coverage" data-addon-price="40"><div><h3>Premium Coverage</h3><p>Expanded medical and cancellation protection.</p></div><div class="option-bottom"><div class="price">$40</div><div class="tag">Select</div></div></div>
           </div>
@@ -80,8 +80,8 @@
           <p class="subtitle">Selected fare plus any optional extras chosen here.</p>
           <div class="innovation-alert summary-details" id="price-change-alert">
             <div class="alert-pill">Price Change Alert</div>
-            <div class="alert-message helper-top" id="price-alert-message">No optional extras selected.</div>
-            <div class="helper-text helper-top">All add-ons are optional and shown before payment.</div>
+            <div class="alert-message helper-top" id="price-alert-message">No optional extras selected. Your included choices remain selected.</div>
+            <div class="helper-text helper-top">Optional extras are user-controlled and shown before payment.</div>
           </div>
           <div class="summary-box summary-details">
             <h4 id="addons-summary-route">Toronto (YYZ) → London (LHR)</h4>
@@ -100,6 +100,7 @@
         </div>
 
         <div class="sidebar-actions">
+          <div class="flow-note">You can continue without extras. The $0 included options are valid choices.</div>
           <a class="btn" href="payment.html">Continue to Payment</a>
           <a class="btn-secondary" href="seat-selection.html">← Back to Seat Selection</a>
         </div>
