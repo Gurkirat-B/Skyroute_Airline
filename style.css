@@ -1,3 +1,4 @@
+/* Main color variables for the light theme and feature accents. */
 :root {
   --primary: #1459C7;
   --primary-dark: #0E3A82;
@@ -55,6 +56,7 @@ body {
   line-height: 1.5;
 }
 
+/* Dark mode changes the variables instead of rewriting every component. */
 body.dark-mode {
   --primary: #60A5FA;
   --primary-dark: #3B82F6;
@@ -112,6 +114,7 @@ a {
   margin: 0 auto;
 }
 
+/* Shared page shell and top navigation styles. */
 .navbar {
   height: 80px;
   background: var(--nav-surface);
@@ -239,6 +242,7 @@ body.dark-mode .theme-toggle {
   color: var(--text);
 }
 
+/* Search form card used by round trip, one way, and multi-city pages. */
 .search-card {
   margin-top: -40px;
   display: flex;
@@ -334,6 +338,7 @@ body.dark-mode .theme-toggle {
   font-size: 15px;
 }
 
+/* Custom passenger selector dropdown on the search pages. */
 .passenger-selector {
   position: relative;
 }
@@ -483,6 +488,7 @@ body.dark-mode .theme-toggle {
   line-height: 1.6;
 }
 
+/* Footer is intentionally slim so it does not overpower the page content. */
 .footer {
   margin-top: auto;
   margin-top: 48px;
@@ -536,6 +542,7 @@ body.dark-mode .theme-toggle {
   margin-top: 6px;
 }
 
+/* Booking progress indicator shown on each flow page. */
 .progress {
   align-items: center;
   flex-wrap: wrap;
@@ -767,6 +774,7 @@ body.dark-mode .theme-toggle {
   content: "✓ ";
 }
 
+/* Flight result cards keep the main comparison details easy to scan. */
 .flight-card {
   display: flex;
   gap: 24px;
@@ -1259,6 +1267,7 @@ select.input option {
   line-height: 1.5;
 }
 
+/* Dark mode component tweaks for contrast and selected states. */
 body.dark-mode .logo {
   color: #A8CCFF;
 }
@@ -1446,6 +1455,7 @@ body.dark-mode .search-help {
   transform: none;
 }
 
+/* Filter controls are grouped like a form so they are easier to scan. */
 .filter-panel {
   display: flex;
   flex-direction: column;
@@ -1571,6 +1581,7 @@ body.dark-mode .search-help {
   font-weight: 700;
 }
 
+/* Reusable info box for innovation features such as Price Change Alert. */
 .innovation-alert {
   padding: 14px 16px;
   border-radius: 16px;

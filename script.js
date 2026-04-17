@@ -1,3 +1,4 @@
+// Run page-specific setup after the HTML is ready.
 document.addEventListener("DOMContentLoaded", () => {
   setupTheme();
   setupHomeForm();
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   populatePriceSummaries();
 });
 
+// Static demo values used for the EcoMatch cards on the results page.
 const ECO_MATCH_DATA = {
   "SR 214": {
     co2: 320,
@@ -36,6 +38,7 @@ const ECO_MATCH_DATA = {
   },
 };
 
+// Theme choice is saved so dark/light mode follows the user between pages.
 function setupTheme() {
   const savedTheme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
   applyTheme(savedTheme);
@@ -80,6 +83,7 @@ function updateThemeToggleLabel(button) {
   button.textContent = isDarkMode ? "☀️ Light" : "🌙 Dark";
 }
 
+// Saves the search form data before sending the user to flight results.
 function setupHomeForm() {
   const form = document.getElementById("home-booking-form");
   if (!form) return;
@@ -111,6 +115,7 @@ function setupHomeForm() {
   });
 }
 
+// Handles result summaries, EcoMatch sorting, and selected flight feedback.
 function setupSearchResults() {
   const buttons = document.querySelectorAll(".select-flight");
   const cards = document.querySelectorAll(".flight-card");
@@ -219,6 +224,7 @@ function populateEcoMatchCard(card) {
   }
 }
 
+// Reorders the existing static cards instead of loading new results.
 function applyFlightSort(list, cards, mode) {
   const orderedCards = Array.from(cards).sort((a, b) => {
     const aData = ECO_MATCH_DATA[a.dataset.flightId];
@@ -268,6 +274,7 @@ function populateFlightDetails() {
   setText("details-total", price);
 }
 
+// Shared summaries keep route, dates, passengers, and class consistent.
 function populateBookingSummaries() {
   const booking = getBookingData();
   const route = getBookingRoute(booking);
@@ -305,6 +312,7 @@ function populateBookingSummaries() {
   });
 }
 
+// Stores the selected seat so later pages can show it again.
 function setupSeatSelection() {
   const seats = document.querySelectorAll(".seat[data-seat]");
   const output = document.getElementById("selected-seat-output");
@@ -348,6 +356,7 @@ function setupSeatSelection() {
   }
 }
 
+// Passenger form values are saved so returning to the page keeps the entries.
 function setupPassengerForm() {
   const form = document.getElementById("passenger-form");
   if (!form) return;
@@ -380,6 +389,7 @@ function setupPassengerForm() {
   });
 }
 
+// Each add-on group keeps one selected option and updates the total.
 function setupAddonSelections() {
   const cards = document.querySelectorAll("[data-addon-group]");
   if (!cards.length) return;
@@ -402,6 +412,7 @@ function setupAddonSelections() {
   });
 }
 
+// Payment is simulated, but the form still saves enough data for confirmation.
 function setupPaymentForm() {
   const form = document.getElementById("payment-form");
   if (!form) return;
@@ -430,6 +441,7 @@ function setupPaymentForm() {
   });
 }
 
+// Confirmation page uses saved values with fallback text for direct visits.
 function populateConfirmation() {
   if (!document.getElementById("confirm-passenger")) return;
 
@@ -453,6 +465,7 @@ function populateConfirmation() {
   setText("confirm-seat-side", booking.seat || "2B");
 }
 
+// Updates the price rows that appear across the booking flow.
 function populatePriceSummaries() {
   const booking = getBookingData();
   const totals = getPriceTotals(booking);
@@ -481,6 +494,7 @@ function populatePriceSummaries() {
   updatePriceChangeAlert(booking);
 }
 
+// localStorage is the simple data store for this static prototype.
 function getBookingData() {
   const existing = localStorage.getItem("bookingData");
   const parsed = existing ? JSON.parse(existing) : {};
@@ -551,6 +565,7 @@ function getHomeBookingData(form, passengerData) {
   };
 }
 
+// Normalizing keeps older/simple passenger values compatible with new fields.
 function normalizeBookingData(booking) {
   const tripType = getNormalizedTripType(booking);
   const adults = getNormalizedCount(booking.adults, getLegacyPassengerCount(booking.passengers));
@@ -597,6 +612,7 @@ function getNormalizedCount(value, fallback) {
   return Number.isNaN(count) ? fallback : Math.max(0, count);
 }
 
+// Builds the route label for regular and multi-city trips.
 function getBookingRoute(booking) {
   if (booking.tripType === "multi-city") {
     const firstLeg = `${booking.leg1From || booking.from || "Toronto (YYZ)"} → ${booking.leg1To || booking.to || "London (LHR)"}`;
@@ -637,6 +653,7 @@ function getAddonPriceKey(group) {
   return `${group}Price`;
 }
 
+// Applies selected card styling and keeps optional extras user-controlled.
 function applyAddonSelection(card, persist) {
   const group = card.dataset.addonGroup;
   const groupCards = document.querySelectorAll(`[data-addon-group="${group}"]`);
@@ -713,6 +730,7 @@ function buildPriceAlertMessage(booking, changedGroup, previousPrice, nextPrice)
   return `Optional add-ons changed your total from ${formatCurrency(totals.baseFare)} to ${formatCurrency(totals.addonsPageTotal)}.`;
 }
 
+// Central place for the mock fare, add-ons, seat, and tax totals.
 function getPriceTotals(booking) {
   const baseFare = getBaseFareValue(booking);
   const baggagePrice = Number(booking.baggagePrice || 0);
@@ -763,6 +781,7 @@ function updateSelectPlaceholderState(select) {
   select.classList.toggle("placeholder-select", !select.value);
 }
 
+// Airline-style passenger control with adults, children, and infants.
 function setupPassengerSelector() {
   const container = document.getElementById("passenger-selector");
   const trigger = document.getElementById("passenger-trigger");
@@ -927,6 +946,7 @@ function getDefaultPassengerData() {
   };
 }
 
+// Prevents users from choosing dates before today on simple trip forms.
 function setupBookingDateLimits(departureInput, returnInput) {
   if (!departureInput) return;
 
@@ -948,6 +968,7 @@ function setupBookingDateLimits(departureInput, returnInput) {
   });
 }
 
+// Multi-city leg 2 cannot be earlier than leg 1.
 function setupMultiCityDateLimits(leg1Input, leg2Input) {
   if (!leg1Input || !leg2Input) return;
 
